@@ -17,7 +17,7 @@ const Navbar = () => {
 
     return (
         <nav className="">
-            <div className="mx-auto flex max-w-7xl items-center justify-between">
+            <div className="mx-auto flex max-w-7xl items-center justify-between text-white">
                 {/* Logo */}
                 <Link href="/">
                     <Image src="/logo.png" alt="Logo" width={100} height={24} />
