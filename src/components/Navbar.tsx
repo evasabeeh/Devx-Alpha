@@ -20,7 +20,7 @@ const Navbar = () => {
             <div className="flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/">
-                    <Image src="/logo.png" alt="Logo" width={100} height={24} />
+                    <Image src="/logo.png" alt="Logo" width={70} height={24} />
                 </Link>
 
                 {/* Hamburger button for mobile */}

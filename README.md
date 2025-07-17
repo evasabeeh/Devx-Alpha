@@ -1,3 +1,3 @@
-bun i
-bun run dev
-bun add [package_name]
+- bun install
+- bun run dev
+- bun add [package_name]
