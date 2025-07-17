@@ -10,20 +10,20 @@ import { FaLocationPin } from "react-icons/fa6";
 export default function Page() {
     return (
         <>
-            <div className="font-lato900 relative pt-20 pb-10">
+            <div className="relative pt-20 pb-10">
                 <div className="absolute inset-0 z-0 bg-[url('/contact-hero.jpg')] bg-cover bg-top" />
 
                 <div className="absolute inset-0 z-10 bg-black/50" />
 
                 <div className="relative z-20 flex h-full items-center justify-start px-5 pb-20 md:px-20">
                     <div className="max-w-xl text-white">
-                        <p className="mb-5 text-sm sm:text-xl md:text-xl">
+                        <p className="font-lato400 mb-5 text-sm sm:text-xl md:text-xl">
                             Contact us
                         </p>
-                        <h1 className="mb-5 text-2xl font-bold sm:text-3xl md:text-5xl">
+                        <h1 className="font-lato900 mb-5 text-2xl font-bold sm:text-3xl md:text-5xl">
                             Get in Touch with Us
                         </h1>
-                        <p className="text-sm sm:text-xl md:text-xl">
+                        <p className="montserrat400 text-sm sm:text-xl md:text-xl">
                             Have questions about{" "}
                             <span className="font-bold">DevX Alpha</span> or
                             need assistance?
@@ -32,16 +32,16 @@ export default function Page() {
                 </div>
             </div>
 
-            <div className="font-montserrat400 my-15 w-full px-6 text-center md:px-20">
-                <h1 className="mb-6 text-3xl font-black md:text-5xl">
+            <div className="my-15 w-full px-6 text-center md:px-20">
+                <h1 className="font-lato900 mb-6 text-3xl font-black md:text-5xl">
                     How can we help you?
                 </h1>
-                <p className="mx-auto mb-4 max-w-full text-xs md:text-sm">
+                <p className="font-montserrat400 mx-auto mb-4 max-w-full text-xs md:text-sm">
                     Ready to transform your ideas into reality with{" "}
                     <span className="font-bold">DevX Alpha</span>? We’re here to
                     help you grow.
                 </p>
-                <p className="mx-auto max-w-full text-xs md:text-sm">
+                <p className="font-montserrat400 mx-auto max-w-full text-xs md:text-sm">
                     Whether you’re looking to elevate your digital presence,
                     need expert guidance for your business, or have a project
                     you’re excited to launch, let’s connect and make it happen.
@@ -51,7 +51,7 @@ export default function Page() {
             </div>
 
             <div className="mb-5 flex w-full justify-center px-6 py-12 md:px-12">
-                <form className="font-montserrat400 w-full max-w-xl space-y-6 rounded-2xl border border-black px-8 py-10">
+                <form className="w-full max-w-xl space-y-6 rounded-2xl border border-black px-8 py-10">
                     <div className="flex items-center border-b-2 !border-gray-400">
                         <TbUserFilled className="mr-4 h-5 w-5 fill-current text-gray-400" />
                         <input
