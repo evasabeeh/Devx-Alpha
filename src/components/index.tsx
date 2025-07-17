@@ -6,6 +6,7 @@ import Services from './Services';
 import Testimonials from './Testimonials';
 import Pricing from './Pricing';
 import Footer from './Footer';
+import Navbar from './Navbar';
 
 export {
     Hero,
@@ -16,4 +17,5 @@ export {
     Testimonials,
     Pricing,
     Footer,
+    Navbar,
 };
