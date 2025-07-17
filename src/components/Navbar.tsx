@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Menu } from 'lucide-react';
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { RxHamburgerMenu } from "react-icons/rx";
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const menuLinks = [
-        { name: 'home', href: '/' },
-        { name: 'about', href: '/about' },
-        { name: 'pricing', href: '/pricing' },
-        { name: 'services', href: '/services' },
-        { name: 'contact', href: '/contact' },
+        { name: "home", href: "/" },
+        { name: "about", href: "/about" },
+        { name: "pricing", href: "/pricing" },
+        { name: "services", href: "/services" },
+        { name: "contact", href: "/contact" },
     ];
 
     return (
-        <nav className="">
-            <div className="mx-auto flex max-w-7xl items-center justify-between text-white">
+        <nav className="bg-black px-4 text-white md:px-20">
+            <div className="flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/">
                     <Image src="/logo.png" alt="Logo" width={100} height={24} />
@@ -25,10 +25,10 @@ const Navbar = () => {
 
                 {/* Hamburger button for mobile */}
                 <button
-                    className="text-white focus:outline-none md:hidden"
+                    className="focus:outline-none md:hidden"
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                    <Menu />
+                    <RxHamburgerMenu size={24} />
                 </button>
 
                 {/* Desktop Menu */}

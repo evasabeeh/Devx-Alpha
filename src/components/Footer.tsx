@@ -1,5 +1,11 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Link from "next/link";
+
+import {
+    FaXTwitter,
+    FaInstagram,
+    FaFacebookF,
+    FaGithub,
+} from "react-icons/fa6";
 
 export default function Footer() {
     return (
@@ -30,40 +36,16 @@ export default function Footer() {
                     </p>
                     <div className="flex justify-center gap-5 md:justify-start">
                         <Link href="/">
-                            <Image
-                                src="/social_icons/x.svg"
-                                alt="Twiiter X icon"
-                                width={30}
-                                height={30}
-                                className=""
-                            />
+                            <FaXTwitter size={30} />
                         </Link>
                         <Link href="/">
-                            <Image
-                                src="/social_icons/facebook.svg"
-                                alt="facebook icon"
-                                width={30}
-                                height={30}
-                                className=""
-                            />
+                            <FaFacebookF size={30} />
                         </Link>
                         <Link href="/">
-                            <Image
-                                src="/social_icons/instagram.svg"
-                                alt="instagram icon"
-                                width={30}
-                                height={30}
-                                className=""
-                            />
+                            <FaInstagram size={30} />
                         </Link>
                         <Link href="/">
-                            <Image
-                                src="/social_icons/github.svg"
-                                alt="github icon"
-                                width={30}
-                                height={30}
-                                className=""
-                            />
+                            <FaGithub size={30} />
                         </Link>
                     </div>
                 </div>

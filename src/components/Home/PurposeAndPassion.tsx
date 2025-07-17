@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function PurposeAndPassion() {
     return (
@@ -31,7 +31,7 @@ export default function PurposeAndPassion() {
             </div>
             <div className="w-full md:w-1/2">
                 <Image
-                    src={'/purpose.jpg'}
+                    src={"/purpose.jpg"}
                     alt="passion"
                     width={500}
                     height={100}

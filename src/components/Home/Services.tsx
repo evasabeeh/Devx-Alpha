@@ -1,56 +1,56 @@
-'use client';
-import Image from 'next/image';
-import { useState } from 'react';
+"use client";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function Services() {
     const services_images = [
         {
-            src: '/services/red/web_development.svg',
-            hoverSrc: '/services/white/web_development.svg',
-            name: 'Web Development',
-            heading: 'Web Development',
+            src: "/services/red/web_development.svg",
+            hoverSrc: "/services/white/web_development.svg",
+            name: "Web Development",
+            heading: "Web Development",
             content:
-                'We build responsive, fast, and scalable websites tailored to your business goals. From design to deployment, we ensure a seamless user experience.',
+                "We build responsive, fast, and scalable websites tailored to your business goals. From design to deployment, we ensure a seamless user experience.",
         },
         {
-            src: '/services/red/app_development.svg',
-            hoverSrc: '/services/white/app_development.svg',
-            name: 'App Development',
-            heading: 'App Development',
+            src: "/services/red/app_development.svg",
+            hoverSrc: "/services/white/app_development.svg",
+            name: "App Development",
+            heading: "App Development",
             content:
-                'Our team creates high-performance mobile apps for Android and iOS. We focus on functionality, performance, and user engagement.',
+                "Our team creates high-performance mobile apps for Android and iOS. We focus on functionality, performance, and user engagement.",
         },
         {
-            src: '/services/red/graphic_design.svg',
-            hoverSrc: '/services/white/graphic_design.svg',
-            name: 'Graphic Design',
-            heading: 'Graphic Design',
+            src: "/services/red/graphic_design.svg",
+            hoverSrc: "/services/white/graphic_design.svg",
+            name: "Graphic Design",
+            heading: "Graphic Design",
             content:
-                'From branding to promotional content, our designs speak louder than words. We turn ideas into visually compelling graphics.',
+                "From branding to promotional content, our designs speak louder than words. We turn ideas into visually compelling graphics.",
         },
         {
-            src: '/services/red/ui_ux_design.svg',
-            hoverSrc: '/services/white/ui_ux_design.svg',
-            name: 'UI UX Design',
-            heading: 'UI UX Design',
+            src: "/services/red/ui_ux_design.svg",
+            hoverSrc: "/services/white/ui_ux_design.svg",
+            name: "UI UX Design",
+            heading: "UI UX Design",
             content:
-                'We design intuitive interfaces and seamless user experiences. Every element is crafted to enhance usability and visual appeal.',
+                "We design intuitive interfaces and seamless user experiences. Every element is crafted to enhance usability and visual appeal.",
         },
         {
-            src: '/services/red/ai_solutions.svg',
-            hoverSrc: '/services/white/ai_solutions.svg',
-            name: 'AI Solutions',
-            heading: 'AI Solutions',
+            src: "/services/red/ai_solutions.svg",
+            hoverSrc: "/services/white/ai_solutions.svg",
+            name: "AI Solutions",
+            heading: "AI Solutions",
             content:
-                'Leverage the power of AI to automate, optimize, and innovate. Our AI-driven tools help your business stay ahead in a smart world.',
+                "Leverage the power of AI to automate, optimize, and innovate. Our AI-driven tools help your business stay ahead in a smart world.",
         },
         {
-            src: '/services/red/cms_development.svg',
-            hoverSrc: '/services/white/cms_development.svg',
-            name: 'CMS Development',
-            heading: 'CMS Development',
+            src: "/services/red/cms_development.svg",
+            hoverSrc: "/services/white/cms_development.svg",
+            name: "CMS Development",
+            heading: "CMS Development",
             content:
-                'We offer custom CMS solutions that put you in control of your content. Easily manage, update, and scale your digital presence.',
+                "We offer custom CMS solutions that put you in control of your content. Easily manage, update, and scale your digital presence.",
         },
     ];
     return (

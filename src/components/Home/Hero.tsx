@@ -1,28 +1,25 @@
-import Navbar from './Navbar';
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function Hero() {
     const client_images = [
         {
-            src: '/client_1.jpg',
-            name: 'Client 1',
+            src: "/client_1.jpg",
+            name: "Client 1",
         },
         {
-            src: '/client_2.jpg',
-            name: 'Client 1',
+            src: "/client_2.jpg",
+            name: "Client 1",
         },
         {
-            src: '/client_3.jpg',
-            name: 'Client 1',
+            src: "/client_3.jpg",
+            name: "Client 1",
         },
     ];
     return (
-        <div className="bg-black text-white">
+        <div className="bg-black pt-10 text-white">
             <div className="bg-[url('/red_bg.png')] bg-cover bg-top px-4 pb-10 md:px-20">
                 {/* Navbar */}
-                <div className="mb-10">
-                    <Navbar />
-                </div>
+
                 {/* Main Content */}
                 <div className="mb-10 flex-none items-center gap-10 md:flex">
                     <div className="mb-10 w-full text-center md:mb-0 md:w-1/3 md:text-left">
@@ -32,7 +29,7 @@ export default function Hero() {
                     </div>
                     <div className="w-full md:w-1/3">
                         <Image
-                            src={'/star.png'}
+                            src={"/star.png"}
                             alt="Star Image"
                             width={500}
                             height={500}
@@ -65,7 +62,7 @@ export default function Hero() {
                             alt="Logo"
                             className="mx-auto"
                         />
-                        <p className={'font-afacad700 text-3xl'}>50k</p>
+                        <p className={"font-afacad700 text-3xl"}>50k</p>
                         <p className="font-montserrat400">
                             286 Contributions in the last year
                         </p>

@@ -1,3 +1,4 @@
+// HOME PAGE
 import {
     Hero,
     TrustedSection,
@@ -6,8 +7,7 @@ import {
     Services,
     Pricing,
     Testimonials,
-    Footer,
-} from '@/components';
+} from "@/components/Home";
 export default function Page() {
     return (
         <div>
@@ -18,7 +18,6 @@ export default function Page() {
             <Services />
             <Testimonials />
             <Pricing />
-            <Footer />
         </div>
     );
 }

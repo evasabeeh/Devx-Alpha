@@ -1,26 +1,26 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function TrustedSection() {
     const illustrations = [
         {
-            src: '/illustrations/camera.png',
-            alt: 'camera illustration',
-            tagline: 'Camera',
+            src: "/illustrations/camera.png",
+            alt: "camera illustration",
+            tagline: "Camera",
         },
         {
-            src: '/illustrations/cloudly.png',
-            alt: 'cloudly illustration',
-            tagline: 'Cloudly',
+            src: "/illustrations/cloudly.png",
+            alt: "cloudly illustration",
+            tagline: "Cloudly",
         },
         {
-            src: '/illustrations/financely.png',
-            alt: 'financely illustration',
-            tagline: 'Financely',
+            src: "/illustrations/financely.png",
+            alt: "financely illustration",
+            tagline: "Financely",
         },
         {
-            src: '/illustrations/techlify.png',
-            alt: 'techlify illustration',
-            tagline: 'Techlify',
+            src: "/illustrations/techlify.png",
+            alt: "techlify illustration",
+            tagline: "Techlify",
         },
     ];
     return (

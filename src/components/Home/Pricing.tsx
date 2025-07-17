@@ -1,125 +1,125 @@
-import Link from 'next/link';
-import { Check, X } from 'lucide-react';
-
+import Link from "next/link";
+import { FaCheck } from "react-icons/fa6";
+import { RxCross2 } from "react-icons/rx";
 export default function Pricing() {
     const pricings = [
         {
-            tagline: 'Freebie',
+            tagline: "Freebie",
             description:
-                'Ideal for individuals who need quick access to basic features.',
+                "Ideal for individuals who need quick access to basic features.",
             price: 0,
             features: [
                 {
                     isHave: true,
-                    content: '20,000+ of PNG & SVG graphics',
+                    content: "20,000+ of PNG & SVG graphics",
                 },
                 {
                     isHave: true,
-                    content: 'Access to 100 million stock images',
+                    content: "Access to 100 million stock images",
                 },
                 {
                     isHave: false,
-                    content: 'Upload custom icons and fonts',
+                    content: "Upload custom icons and fonts",
                 },
                 {
                     isHave: false,
-                    content: 'Unlimited Sharing',
+                    content: "Unlimited Sharing",
                 },
                 {
                     isHave: false,
-                    content: 'Upload graphics & video in up to 4k',
+                    content: "Upload graphics & video in up to 4k",
                 },
                 {
                     isHave: false,
-                    content: 'Unlimited Projects',
+                    content: "Unlimited Projects",
                 },
                 {
                     isHave: false,
-                    content: 'Instant Access to our design system',
+                    content: "Instant Access to our design system",
                 },
                 {
                     isHave: false,
-                    content: 'Create teams to collaborate on designs',
+                    content: "Create teams to collaborate on designs",
                 },
             ],
         },
         {
-            tagline: 'Professional',
+            tagline: "Professional",
             description:
-                'Ideal for individuals who who need advanced features and tools for client work.',
+                "Ideal for individuals who who need advanced features and tools for client work.",
             price: 25,
             features: [
                 {
                     isHave: true,
-                    content: '20,000+ of PNG & SVG graphics',
+                    content: "20,000+ of PNG & SVG graphics",
                 },
                 {
                     isHave: true,
-                    content: 'Access to 100 million stock images',
+                    content: "Access to 100 million stock images",
                 },
                 {
                     isHave: true,
-                    content: 'Upload custom icons and fonts',
+                    content: "Upload custom icons and fonts",
                 },
                 {
                     isHave: true,
-                    content: 'Unlimited Sharing',
+                    content: "Unlimited Sharing",
                 },
                 {
                     isHave: true,
-                    content: 'Upload graphics & video in up to 4k',
+                    content: "Upload graphics & video in up to 4k",
                 },
                 {
                     isHave: true,
-                    content: 'Unlimited Projects',
+                    content: "Unlimited Projects",
                 },
                 {
                     isHave: false,
-                    content: 'Instant Access to our design system',
+                    content: "Instant Access to our design system",
                 },
                 {
                     isHave: false,
-                    content: 'Create teams to collaborate on designs',
+                    content: "Create teams to collaborate on designs",
                 },
             ],
         },
         {
-            tagline: 'Enterprise',
+            tagline: "Enterprise",
             description:
-                'Ideal for businesses who need personalized services and security for large teams.',
+                "Ideal for businesses who need personalized services and security for large teams.",
             price: 100,
             features: [
                 {
                     isHave: true,
-                    content: '20,000+ of PNG & SVG graphics',
+                    content: "20,000+ of PNG & SVG graphics",
                 },
                 {
                     isHave: true,
-                    content: 'Access to 100 million stock images',
+                    content: "Access to 100 million stock images",
                 },
                 {
                     isHave: true,
-                    content: 'Upload custom icons and fonts',
+                    content: "Upload custom icons and fonts",
                 },
                 {
                     isHave: true,
-                    content: 'Unlimited Sharing',
+                    content: "Unlimited Sharing",
                 },
                 {
                     isHave: true,
-                    content: 'Upload graphics & video in up to 4k',
+                    content: "Upload graphics & video in up to 4k",
                 },
                 {
                     isHave: true,
-                    content: 'Unlimited Projects',
+                    content: "Unlimited Projects",
                 },
                 {
                     isHave: true,
-                    content: 'Instant Access to our design system',
+                    content: "Instant Access to our design system",
                 },
                 {
                     isHave: true,
-                    content: 'Create teams to collaborate on designs',
+                    content: "Create teams to collaborate on designs",
                 },
             ],
         },
@@ -160,10 +160,10 @@ export default function Pricing() {
                                 >
                                     <div className="rounded-full bg-slate-100 p-2">
                                         {feature.isHave ? (
-                                            <Check size={12} color="green" />
+                                            <FaCheck size={12} color="green" />
                                         ) : (
-                                            <X size={12} color="red" />
-                                        )}{' '}
+                                            <RxCross2 size={12} color="red" />
+                                        )}{" "}
                                     </div>
                                     <div className="ml-1">
                                         {feature.content}
