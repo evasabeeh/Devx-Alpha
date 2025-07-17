@@ -22,7 +22,7 @@ const Navbar = () => {
         { name: "App Development", href: "/services/app-development" },
         { name: "Graphic Design", href: "/services/graphic-design" },
         { name: "UI/UX Design", href: "/services/uiux-design" },
-        { name: "AI Applications", href: "/services/ai-applications" },
+        { name: "AI Solutions", href: "/services/ai-solutions" },
         { name: "CMS Development", href: "/services/cms-development" },
     ];
 
@@ -52,7 +52,7 @@ const Navbar = () => {
                         <div className="flex items-center gap-1 capitalize hover:text-gray-300">
                             Services <IoIosArrowDown />
                         </div>
-                        <ul className="absolute left-0 mt-2 hidden w-40 rounded-md bg-white py-2 text-black shadow-lg group-hover:block">
+                        <ul className="z-20 absolute left-0 mt-2 hidden w-40 rounded-md bg-white py-2 text-black shadow-lg group-hover:block">
                             {serviceLinks.map((sublink) => (
                                 <li key={sublink.name}>
                                     <Link
