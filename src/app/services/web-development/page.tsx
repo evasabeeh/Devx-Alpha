@@ -23,7 +23,7 @@ const webDevData = {
             cardsRight: [
                 {
                     title: 'Responsive & Mobile-First Design',
-                    icon: 'DiResponsive',
+                    icon: 'MdOutlineTabletAndroid',
                     description:
                         'We design websites that adapt seamlessly across all devices, ensuring fast loading and smooth navigation on smartphones, tablets, and desktops. This helps you reach and engage your audience effectively everywhere.',
                 },

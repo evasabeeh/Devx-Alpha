@@ -15,23 +15,23 @@ const aiSolutionsData = {
             cards: [
                 {
                     title: "Chatbot Development",
-                    icon: "BiMessageRoundedDetail",
+                    icon: "HiOutlineChatBubbleOvalLeft",
                     description:
                         "We build AI-powered chatbots that efficiently handle customer support, lead generation, and FAQs across your website or app. These chatbots improve engagement, reduce response time, and provide 24/7 assistance to your customers.",
-                },
-                {
-                    title: "AI Integration in Apps",
-                    icon: "MdAppSettingsAlt",
-                    description:
-                        "We integrate AI features like personalized recommendations, NLP, and image recognition into your mobile and web apps. This enhances functionality, user experience, and adds intelligent capabilities to your product without complexity.",
                 },
             ],
             cardsRight: [
                 {
-                    title: "Natural Language Processing (NLP)",
-                    icon: "BiConversation",
+                    title: "Predictive Analytics",
+                    icon: "HiMiniArrowTrendingUp",
                     description:
-                        "We develop NLP solutions that enable your systems to understand, process, and generate human language. From text analysis and sentiment detection to voice assistants and smart search, NLP adds intelligence to your products and improves user interactions.",
+                        "We develop predictive analytics models to forecast customer behavior, sales trends, and operational outcomes using your data. This empowers you to make informed, data-driven decisions that improve business strategies and reduce risks.",
+                },
+                {
+                    title: "Computer Vision Solutions",
+                    icon: "LuCircleDot",
+                    description:
+                        "We build computer vision applications that detect, analyze, and interpret images and video data, enabling capabilities like facial recognition, object detection, and automated quality control for your business operations.",
                 },
             ],
         },
@@ -39,22 +39,22 @@ const aiSolutionsData = {
             layout: "right" as "right",
             cards: [
                 {
-                    title: "Predictive Analytics",
-                    icon: "MdShowChart",
+                    title: "AI Integration in Apps",
+                    icon: "HiOutlineDeviceMobile",
                     description:
-                        "We develop predictive analytics models to forecast customer behavior, sales trends, and operational outcomes using your data. This empowers you to make informed, data-driven decisions that improve business strategies and reduce risks.",
+                        "We integrate AI features like personalized recommendations, NLP, and image recognition into your mobile and web apps. This enhances functionality, user experience, and adds intelligent capabilities to your product without complexity.",
                 },
                 {
-                    title: "Computer Vision Solutions",
-                    icon: "AiOutlineCamera",
+                    title: "Natural Language Processing (NLP)",
+                    icon: "MdOutlineChat",
                     description:
-                        "We build computer vision applications that detect, analyze, and interpret images and video data, enabling capabilities like facial recognition, object detection, and automated quality control for your business operations.",
+                        "We develop NLP solutions that enable your systems to understand, process, and generate human language. From text analysis and sentiment detection to voice assistants and smart search, NLP adds intelligence to your products and improves user interactions.",
                 },
             ],
             cardsRight: [
                 {
                     title: "Data-Driven Automation Tools",
-                    icon: "AiOutlineSync",
+                    icon: "IoSyncSharp",
                     description:
                         "We build automation tools powered by AI that handle repetitive and time-consuming tasks within your business workflows. These tools help improve productivity, reduce errors, and free up your team to focus on higher-value work.",
                 },

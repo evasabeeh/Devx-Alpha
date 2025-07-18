@@ -15,29 +15,12 @@ const cmsSolutionsData = {
             cards: [
                 {
                     title: "WordPress, Shopify, Webflow Development",
-                    icon: "FaGlobe",
+                    icon: "GoGlobe",
                     description:
                         "We build and customize websites on WordPress, Shopify, and Webflow tailored to your business needs, whether for e-commerce, blogs, or portfolios. Our builds ensure your site is secure, responsive, SEO-friendly, and easy to update without technical complexity.",
                 },
-                {
-                    title: "Plugin & Theme Customization",
-                    icon: "PiPencilSimpleLineFill",
-                    description:
-                        "We customize themes and plugins to match your branding and functionality needs while maintaining performance and user experience. This allows your CMS site to remain unique, visually aligned with your brand, and optimized for your goals.",
-                },
             ],
             cardsRight: [
-                {
-                    title: "CMS Performance Optimization",
-                    icon: "BiRefresh",
-                    description:
-                        "We optimize your CMS website for speed, responsiveness, and SEO by improving loading times, image handling, and code efficiency. A fast, optimized website enhances user experience, lowers bounce rates, and improves your search engine rankings.",
-                },
-            ],
-        },
-        {
-            layout: "right" as "right",
-            cards: [
                 {
                     title: "Custom CMS Solutions",
                     icon: "FiSettings",
@@ -46,15 +29,32 @@ const cmsSolutionsData = {
                 },
                 {
                     title: "Content Migration & Setup",
-                    icon: "FiUpload",
+                    icon: "HiOutlineArrowUpTray",
                     description:
                         "We handle seamless content migration from your old platform to your new CMS, ensuring all data, images, and SEO structures are preserved. We also organize and set up your content for easy updates, maintaining consistency and structure across your website.",
+                },
+            ],
+        },
+        {
+            layout: "right" as "right",
+            cards: [
+                {
+                    title: "Plugin & Theme Customization",
+                    icon: "BsPlugin",
+                    description:
+                        "We customize themes and plugins to match your branding and functionality needs while maintaining performance and user experience. This allows your CMS site to remain unique, visually aligned with your brand, and optimized for your goals.",
+                },
+                {
+                    title: "CMS Performance Optimization",
+                    icon: "IoMdCheckmarkCircleOutline",
+                    description:
+                        "We optimize your CMS website for speed, responsiveness, and SEO by improving loading times, image handling, and code efficiency. A fast, optimized website enhances user experience, lowers bounce rates, and improves your search engine rankings.",
                 },
             ],
             cardsRight: [
                 {
                     title: "CMS Maintenance and Support",
-                    icon: "MdSecurity",
+                    icon: "BiCheckShield",
                     description:
                         "We provide ongoing CMS maintenance, updates, and technical support to ensure your website remains secure, up-to-date, and performs efficiently. This includes monitoring, backups, troubleshooting, and feature enhancements as your needs evolve.",
                 },

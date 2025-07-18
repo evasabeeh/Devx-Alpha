@@ -8,30 +8,31 @@ const heroData = {
     image: "/services/hero/graphic-hero.jpg",
 };
 
+
 const designSolutionsData = {
     sections: [
         {
             layout: "left" as "left",
             cards: [
                 {
-                    title: "User Research & Personas",
-                    icon: "PiUserCircleGearBold",
+                    title: "Social Media Creatives",
+                    icon: "LuImage",
                     description:
-                        "We conduct in-depth user research to understand your audience’s goals, frustrations, and behavior patterns. By creating detailed user personas, we align your product design with real user needs, ensuring your product solves the right problems.",
+                        "We design scroll-stopping posts, stories, and ad creatives that engage your audience while maintaining brand consistency. From Instagram carousels to LinkedIn banners, we ensure your social presence remains visually strong.",
                 },
             ],
             cardsRight: [
                 {
-                    title: "Usability Testing",
-                    icon: "LuClock3",
+                    title: "Branding and Logo Design",
+                    icon: "FaRegClock",
                     description:
-                        "We create visually clear and engaging infographics that transform complex information into easy-to-understand visuals. These are perfect for social sharing, presentations, and simplifying reports for your audience.",
+                        "We create impactful logos and comprehensive brand identities that reflect your business’s values and vision. Our designs ensure your brand remains consistent across all platforms and leaves a memorable impression.",
                 },
                 {
-                    title: "Interaction Design & Microinteractions",
-                    icon: "PiCodeBold",
+                    title: "Marketing Collateral (Brochures, Posters)",
+                    icon: "PiBrowser",
                     description:
-                        "We design intuitive interactions and micro animations that guide users seamlessly through your product while making the experience delightful. Thoughtful micro interactions enhance usability, provide feedback, and add a polished, human touch to your app or website.",
+                        "We design brochures, posters, and flyers that clearly communicate your message while capturing attention. Our designs blend aesthetics with strategy, ensuring your marketing materials are both beautiful and effective.",
                 },
             ],
         },
@@ -39,24 +40,24 @@ const designSolutionsData = {
             layout: "right" as "right",
             cards: [
                 {
-                    title: "Wireframing & Prototyping",
-                    icon: "PiSquaresFourFill",
+                    title: "Infographics",
+                    icon: "BsFileBarGraph",
                     description:
-                        "We design clear wireframes to map user flows and structure, then build interactive prototypes to visualize the user journey before development. This process helps refine user experience early and allows for stakeholder feedback to reduce rework later.",
+                        "We create visually clear and engaging infographics that transform complex information into easy-to-understand visuals. These are perfect for social sharing, presentations, and simplifying reports for your audience.",
                 },
                 {
-                    title: "Mobile & Web Interface Design",
-                    icon: "PiDeviceMobileBold",
+                    title: "Packaging Design",
+                    icon: "TbCube",
                     description:
-                        "We design intuitive and visually compelling interfaces for mobile and web that prioritize usability, accessibility, and your brand’s identity. From typography and color to interaction design, we ensure your product looks modern and feels seamless to use.",
+                        "We design attractive and functional packaging that showcases your product while aligning with your brand’s identity. Our packaging designs focus on standing out on shelves and creating a memorable unboxing experience.",
                 },
             ],
             cardsRight: [
                 {
-                    title: "Design Systems & UI Kits",
-                    icon: "PiTriangleFill",
+                    title: "Presentation Design",
+                    icon: "RiComputerLine",
                     description:
-                        "We build scalable design systems and UI kits to maintain visual consistency and speed up product development. Our systems include reusable components, typography, colors, and guidelines to ensure your product remains cohesive as it grows.",
+                        "We design clean, engaging presentations for client pitches, webinars, and internal decks. Our designs ensure your message is clear, visually appealing, and aligned with your brand to captivate your audience.",
                 },
             ],
         },

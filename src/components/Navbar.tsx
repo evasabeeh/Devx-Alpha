@@ -12,6 +12,7 @@ const Navbar = () => {
 
     const menuLinks = [
         { name: "home", href: "/" },
+        { name: "services", href: "/services" },
         { name: "about", href: "/about" },
         { name: "pricing", href: "/pricing" },
         { name: "contact", href: "/contact" },
@@ -43,28 +44,35 @@ const Navbar = () => {
 
                 <ul className="font-lato400 hidden items-center space-x-6 md:flex">
                     {menuLinks.map((link) => (
-                        <li key={link.name} className="capitalize hover:text-gray-300">
-                            <Link href={link.href}>{link.name}</Link>
+                        <li key={link.name} className="relative group">
+                            {link.name === 'services' ? (
+                                <>
+                                    <div className="flex items-center gap-1 capitalize hover:text-gray-300 cursor-pointer">
+                                        Services <IoIosArrowDown />
+                                    </div>
+                                    <ul className="z-20 absolute left-0 mt-2 hidden w-50 rounded-md bg-white py-2 text-black shadow-lg group-hover:block">
+                                        {serviceLinks.map((sublink) => (
+                                            <li key={sublink.name}>
+                                                <Link
+                                                    href={sublink.href}
+                                                    className="block px-4 py-2 hover:bg-gray-200 capitalize"
+                                                >
+                                                    {sublink.name}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </>
+                            ) : (
+                                <Link
+                                    href={link.href}
+                                    className="capitalize hover:text-gray-300"
+                                >
+                                    {link.name}
+                                </Link>
+                            )}
                         </li>
                     ))}
-
-                    <li className="relative group cursor-pointer">
-                        <div className="flex items-center gap-1 capitalize hover:text-gray-300">
-                            Services <IoIosArrowDown />
-                        </div>
-                        <ul className="z-20 absolute left-0 mt-2 hidden w-40 rounded-md bg-white py-2 text-black shadow-lg group-hover:block">
-                            {serviceLinks.map((sublink) => (
-                                <li key={sublink.name}>
-                                    <Link
-                                        href={sublink.href}
-                                        className="block px-4 py-2 hover:bg-gray-200 capitalize"
-                                    >
-                                        {sublink.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </li>
 
                     <li>
                         <Link
@@ -80,39 +88,46 @@ const Navbar = () => {
             {isOpen && (
                 <div className="px-4 pb-4 md:hidden">
                     <ul className="font-lato400 space-y-4">
+
                         {menuLinks.map((link) => (
                             <li key={link.name} className="capitalize">
-                                <Link href={link.href} onClick={() => setIsOpen(false)}>
-                                    {link.name}
-                                </Link>
+                                {link.name === 'services' ? (
+                                    <>
+                                        <button
+                                            onClick={() => setIsServicesOpen(!isServicesOpen)}
+                                            className="flex w-full items-center justify-between capitalize text-left"
+                                        >
+                                            Services{' '}
+                                            <IoIosArrowDown
+                                                className={`transition-transform ${isServicesOpen ? 'rotate-180' : ''
+                                                    }`}
+                                            />
+                                        </button>
+                                        {isServicesOpen && (
+                                            <ul className="text-center mt-5 space-y-5 text-sm text-white">
+                                                {serviceLinks.map((sublink) => (
+                                                    <li key={sublink.name}>
+                                                        <Link
+                                                            href={sublink.href}
+                                                            onClick={() => {
+                                                                setIsOpen(false);
+                                                                setIsServicesOpen(false);
+                                                            }}
+                                                        >
+                                                            {sublink.name}
+                                                        </Link>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                    </>
+                                ) : (
+                                    <Link href={link.href} onClick={() => setIsOpen(false)}>
+                                        {link.name}
+                                    </Link>
+                                )}
                             </li>
                         ))}
-
-                        <li>
-                            <button
-                                onClick={() => setIsServicesOpen(!isServicesOpen)}
-                                className="flex w-full items-center justify-between capitalize text-left"
-                            >
-                                Services <IoIosArrowDown className={`transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
-                            </button>
-                            {isServicesOpen && (
-                                <ul className="ml-4 mt-2 space-y-2 text-sm text-white">
-                                    {serviceLinks.map((sublink) => (
-                                        <li key={sublink.name}>
-                                            <Link
-                                                href={sublink.href}
-                                                onClick={() => {
-                                                    setIsOpen(false);
-                                                    setIsServicesOpen(false);
-                                                }}
-                                            >
-                                                {sublink.name}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                        </li>
 
                         <li>
                             <Link

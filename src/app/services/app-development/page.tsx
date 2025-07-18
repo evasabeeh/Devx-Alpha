@@ -15,7 +15,7 @@ const mobileAppDevData = {
             cards: [
                 {
                     title: 'iOS & Android App Development',
-                    icon: 'MdPhoneIphone',
+                    icon: 'BsLayoutSidebarReverse',
                     description:
                         'We build native apps for iOS and Android, ensuring top performance, smooth user experience, and full utilization of platform features.',
                 },
@@ -23,13 +23,13 @@ const mobileAppDevData = {
             cardsRight: [
                 {
                     title: 'Cross-Platform Apps (Flutter/React Native)',
-                    icon: 'FaReact',
+                    icon: 'PiShareNetwork',
                     description:
                         'We develop apps that work seamlessly on both iOS and Android using Flutter or React Native, reducing cost while ensuring consistent user experience.',
                 },
                 {
                     title: 'API Integration',
-                    icon: 'BiPlug',
+                    icon: 'AiOutlineApi',
                     description:
                         'We integrate third-party APIs to extend your app’s functionality, enabling features like payments, maps, and social logins seamlessly.',
                 },
@@ -40,13 +40,13 @@ const mobileAppDevData = {
             cards: [
                 {
                     title: 'App Testing and Deployment',
-                    icon: 'BiCheckShield',
+                    icon: 'LuDiamond',
                     description:
                         'We rigorously test and deploy your app on App Store and Play Store, ensuring it is bug-free, secure, and ready for your audience.',
                 },
                 {
                     title: 'App Maintenance and Updates',
-                    icon: 'MdUpdate',
+                    icon: 'IoMdCheckmarkCircleOutline',
                     description:
                         'We provide regular updates, security checks, and feature enhancements to keep your app running smoothly and aligned with user needs.',
                 },
@@ -54,7 +54,7 @@ const mobileAppDevData = {
             cardsRight: [
                 {
                     title: 'App UI/UX Redesign',
-                    icon: 'MdOutlineDesignServices',
+                    icon: 'PiAppWindow',
                     description:
                         'We refresh and improve your existing app’s design to enhance usability, visual appeal, and user retention while aligning it with current trends and user expectations.',
                 },
