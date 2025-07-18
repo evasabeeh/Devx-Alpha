@@ -28,11 +28,11 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className="bg-black px-4 text-white md:px-20">
+        <nav className="bg-black px-4 py-4 text-white md:px-20">
             <div className="flex items-center justify-between">
 
                 <Link href="/">
-                    <Image src="/logo.png" alt="Logo" width={70} height={24} />
+                    <Image src="/logo.png" alt="Logo" width={50} height={50} />
                 </Link>
 
                 <button
@@ -76,7 +76,7 @@ const Navbar = () => {
 
                     <li>
                         <Link
-                            href="/sign-up"
+                            href="/signup"
                             className="rounded-full border-2 border-white px-6 py-2 transition hover:bg-white hover:text-black"
                         >
                             Sign Up
@@ -131,7 +131,7 @@ const Navbar = () => {
 
                         <li>
                             <Link
-                                href="/sign-up"
+                                href="/signup"
                                 className="block rounded-full border-2 border-white px-6 py-2 text-center transition hover:bg-white hover:text-black"
                                 onClick={() => setIsOpen(false)}
                             >
