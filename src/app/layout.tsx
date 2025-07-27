@@ -10,6 +10,7 @@ import {
     Manrope,
     Plus_Jakarta_Sans,
 } from "next/font/google";
+
 const lato400 = Lato({
     weight: "400",
     subsets: ["latin"],

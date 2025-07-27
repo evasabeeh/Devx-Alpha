@@ -11,52 +11,52 @@ const heroData = {
 const mobileAppDevData = {
     sections: [
         {
-            layout: "left" as "left",
+            layout: "left" as const,
             cards: [
                 {
-                    title: 'iOS & Android App Development',
-                    icon: 'BsLayoutSidebarReverse',
+                    title: "iOS & Android App Development",
+                    icon: "BsLayoutSidebarReverse",
                     description:
-                        'We build native apps for iOS and Android, ensuring top performance, smooth user experience, and full utilization of platform features.',
+                        "We build native apps for iOS and Android, ensuring top performance, smooth user experience, and full utilization of platform features.",
                 },
             ],
             cardsRight: [
                 {
-                    title: 'Cross-Platform Apps (Flutter/React Native)',
-                    icon: 'PiShareNetwork',
+                    title: "Cross-Platform Apps (Flutter/React Native)",
+                    icon: "PiShareNetwork",
                     description:
-                        'We develop apps that work seamlessly on both iOS and Android using Flutter or React Native, reducing cost while ensuring consistent user experience.',
+                        "We develop apps that work seamlessly on both iOS and Android using Flutter or React Native, reducing cost while ensuring consistent user experience.",
                 },
                 {
-                    title: 'API Integration',
-                    icon: 'AiOutlineApi',
+                    title: "API Integration",
+                    icon: "AiOutlineApi",
                     description:
-                        'We integrate third-party APIs to extend your app’s functionality, enabling features like payments, maps, and social logins seamlessly.',
+                        "We integrate third-party APIs to extend your app’s functionality, enabling features like payments, maps, and social logins seamlessly.",
                 },
             ],
         },
         {
-            layout: "right" as "right",
+            layout: "right" as const,
             cards: [
                 {
-                    title: 'App Testing and Deployment',
-                    icon: 'LuDiamond',
+                    title: "App Testing and Deployment",
+                    icon: "LuDiamond",
                     description:
-                        'We rigorously test and deploy your app on App Store and Play Store, ensuring it is bug-free, secure, and ready for your audience.',
+                        "We rigorously test and deploy your app on App Store and Play Store, ensuring it is bug-free, secure, and ready for your audience.",
                 },
                 {
-                    title: 'App Maintenance and Updates',
-                    icon: 'IoMdCheckmarkCircleOutline',
+                    title: "App Maintenance and Updates",
+                    icon: "IoMdCheckmarkCircleOutline",
                     description:
-                        'We provide regular updates, security checks, and feature enhancements to keep your app running smoothly and aligned with user needs.',
+                        "We provide regular updates, security checks, and feature enhancements to keep your app running smoothly and aligned with user needs.",
                 },
             ],
             cardsRight: [
                 {
-                    title: 'App UI/UX Redesign',
-                    icon: 'PiAppWindow',
+                    title: "App UI/UX Redesign",
+                    icon: "PiAppWindow",
                     description:
-                        'We refresh and improve your existing app’s design to enhance usability, visual appeal, and user retention while aligning it with current trends and user expectations.',
+                        "We refresh and improve your existing app’s design to enhance usability, visual appeal, and user retention while aligning it with current trends and user expectations.",
                 },
             ],
         },
@@ -64,10 +64,8 @@ const mobileAppDevData = {
 };
 
 export default function Page() {
-
     return (
         <div>
-
             <Hero
                 title={heroData.title}
                 description={heroData.description}

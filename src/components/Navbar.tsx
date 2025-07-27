@@ -30,7 +30,6 @@ const Navbar = () => {
     return (
         <nav className="bg-black px-4 py-4 text-white md:px-20">
             <div className="flex items-center justify-between">
-
                 <Link href="/">
                     <Image src="/logo.png" alt="Logo" width={50} height={50} />
                 </Link>
@@ -44,18 +43,18 @@ const Navbar = () => {
 
                 <ul className="font-lato400 hidden items-center space-x-6 md:flex">
                     {menuLinks.map((link) => (
-                        <li key={link.name} className="relative group">
-                            {link.name === 'services' ? (
+                        <li key={link.name} className="group relative">
+                            {link.name === "services" ? (
                                 <>
-                                    <div className="flex items-center gap-1 capitalize hover:text-gray-300 cursor-pointer">
+                                    <div className="flex cursor-pointer items-center gap-1 capitalize hover:text-gray-300">
                                         Services <IoIosArrowDown />
                                     </div>
-                                    <ul className="z-20 absolute left-0 mt-2 hidden w-50 rounded-md bg-white py-2 text-black shadow-lg group-hover:block">
+                                    <ul className="absolute left-0 z-20 mt-2 hidden w-50 rounded-md bg-white py-2 text-black shadow-lg group-hover:block">
                                         {serviceLinks.map((sublink) => (
                                             <li key={sublink.name}>
                                                 <Link
                                                     href={sublink.href}
-                                                    className="block px-4 py-2 hover:bg-gray-200 capitalize"
+                                                    className="block px-4 py-2 capitalize hover:bg-gray-200"
                                                 >
                                                     {sublink.name}
                                                 </Link>
@@ -76,7 +75,7 @@ const Navbar = () => {
 
                     <li>
                         <Link
-                            href="/signup"
+                            href="/sign-up"
                             className="rounded-full border-2 border-white px-6 py-2 transition hover:bg-white hover:text-black"
                         >
                             Sign Up
@@ -88,30 +87,40 @@ const Navbar = () => {
             {isOpen && (
                 <div className="px-4 pb-4 md:hidden">
                     <ul className="font-lato400 space-y-4">
-
                         {menuLinks.map((link) => (
                             <li key={link.name} className="capitalize">
-                                {link.name === 'services' ? (
+                                {link.name === "services" ? (
                                     <>
                                         <button
-                                            onClick={() => setIsServicesOpen(!isServicesOpen)}
-                                            className="flex w-full items-center justify-between capitalize text-left"
+                                            onClick={() =>
+                                                setIsServicesOpen(
+                                                    !isServicesOpen
+                                                )
+                                            }
+                                            className="flex w-full items-center justify-between text-left capitalize"
                                         >
-                                            Services{' '}
+                                            Services{" "}
                                             <IoIosArrowDown
-                                                className={`transition-transform ${isServicesOpen ? 'rotate-180' : ''
-                                                    }`}
+                                                className={`transition-transform ${
+                                                    isServicesOpen
+                                                        ? "rotate-180"
+                                                        : ""
+                                                }`}
                                             />
                                         </button>
                                         {isServicesOpen && (
-                                            <ul className="text-center mt-5 space-y-5 text-sm text-white">
+                                            <ul className="mt-5 space-y-5 text-center text-sm text-white">
                                                 {serviceLinks.map((sublink) => (
                                                     <li key={sublink.name}>
                                                         <Link
                                                             href={sublink.href}
                                                             onClick={() => {
-                                                                setIsOpen(false);
-                                                                setIsServicesOpen(false);
+                                                                setIsOpen(
+                                                                    false
+                                                                );
+                                                                setIsServicesOpen(
+                                                                    false
+                                                                );
                                                             }}
                                                         >
                                                             {sublink.name}
@@ -122,7 +131,10 @@ const Navbar = () => {
                                         )}
                                     </>
                                 ) : (
-                                    <Link href={link.href} onClick={() => setIsOpen(false)}>
+                                    <Link
+                                        href={link.href}
+                                        onClick={() => setIsOpen(false)}
+                                    >
                                         {link.name}
                                     </Link>
                                 )}

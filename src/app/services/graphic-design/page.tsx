@@ -8,11 +8,10 @@ const heroData = {
     image: "/services/hero/graphic-hero.jpg",
 };
 
-
 const designSolutionsData = {
     sections: [
         {
-            layout: "left" as "left",
+            layout: "left" as const,
             cards: [
                 {
                     title: "Social Media Creatives",
@@ -37,7 +36,7 @@ const designSolutionsData = {
             ],
         },
         {
-            layout: "right" as "right",
+            layout: "right" as const,
             cards: [
                 {
                     title: "Infographics",
@@ -65,10 +64,8 @@ const designSolutionsData = {
 };
 
 export default function Page() {
-
     return (
         <div>
-
             <Hero
                 title={heroData.title}
                 description={heroData.description}

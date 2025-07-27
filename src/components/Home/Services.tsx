@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function Services() {
+    const [isHovered, setIsHovered] = useState(false);
     const services_images = [
         {
             src: "/services/red/web_development.svg",
@@ -63,8 +64,6 @@ export default function Services() {
             </div>
             <div className="grid grid-cols-1 grid-rows-6 gap-4 md:grid-cols-3 md:grid-rows-2">
                 {services_images.map((image, index) => {
-                    const [isHovered, setIsHovered] = useState(false);
-
                     return (
                         <div
                             key={index}

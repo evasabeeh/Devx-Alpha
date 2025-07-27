@@ -10,13 +10,13 @@ export default function PurposeAndPassion() {
                 </h2>
                 <br />
                 <p>
-                    At Devx Alpha, we don’t just offer products—we craft
-                    experiences. Whether it's through our thoughtfully designed
-                    [products/services], attention to detail, or commitment to
-                    quality, everything we do is rooted in creativity, care, and
-                    connection. We aim to inspire, serve, and exceed
-                    expectations by understanding your needs and turning ideas
-                    into impactful results.
+                    At Devx Alpha, we don&apos;t just offer products—we craft
+                    experiences. Whether it&apos;s through our thoughtfully
+                    designed [products/services], attention to detail, or
+                    commitment to quality, everything we do is rooted in
+                    creativity, care, and connection. We aim to inspire, serve,
+                    and exceed expectations by understanding your needs and
+                    turning ideas into impactful results.
                 </p>
                 <br />
                 <p>

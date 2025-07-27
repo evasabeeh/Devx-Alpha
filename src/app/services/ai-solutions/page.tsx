@@ -11,7 +11,7 @@ const heroData = {
 const aiSolutionsData = {
     sections: [
         {
-            layout: "left" as "left",
+            layout: "left" as const,
             cards: [
                 {
                     title: "Chatbot Development",
@@ -36,7 +36,7 @@ const aiSolutionsData = {
             ],
         },
         {
-            layout: "right" as "right",
+            layout: "right" as const,
             cards: [
                 {
                     title: "AI Integration in Apps",
@@ -64,10 +64,8 @@ const aiSolutionsData = {
 };
 
 export default function Page() {
-
     return (
         <div>
-
             <Hero
                 title={heroData.title}
                 description={heroData.description}

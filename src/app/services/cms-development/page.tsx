@@ -11,7 +11,7 @@ const heroData = {
 const cmsSolutionsData = {
     sections: [
         {
-            layout: "left" as "left",
+            layout: "left" as const,
             cards: [
                 {
                     title: "WordPress, Shopify, Webflow Development",
@@ -36,7 +36,7 @@ const cmsSolutionsData = {
             ],
         },
         {
-            layout: "right" as "right",
+            layout: "right" as const,
             cards: [
                 {
                     title: "Plugin & Theme Customization",
@@ -64,10 +64,8 @@ const cmsSolutionsData = {
 };
 
 export default function Page() {
-
     return (
         <div>
-
             <Hero
                 title={heroData.title}
                 description={heroData.description}

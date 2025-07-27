@@ -11,7 +11,7 @@ const heroData = {
 const designSolutionsData = {
     sections: [
         {
-            layout: "left" as "left",
+            layout: "left" as const,
             cards: [
                 {
                     title: "User Research & Personas",
@@ -36,7 +36,7 @@ const designSolutionsData = {
             ],
         },
         {
-            layout: "right" as "right",
+            layout: "right" as const,
             cards: [
                 {
                     title: "Usability Testing",
@@ -64,10 +64,8 @@ const designSolutionsData = {
 };
 
 export default function Page() {
-
     return (
         <div>
-
             <Hero
                 title={heroData.title}
                 description={heroData.description}

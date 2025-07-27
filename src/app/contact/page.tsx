@@ -31,7 +31,6 @@ export default function Page() {
             <ContactForm />
 
             <div className="mb-20 w-full px-5 md:px-20">
-                
                 <div className="font-montserrat400 flex flex-col items-start justify-between gap-6 text-sm text-gray-800 md:flex-row md:items-center md:text-base">
                     <div className="flex items-center gap-2">
                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black">
