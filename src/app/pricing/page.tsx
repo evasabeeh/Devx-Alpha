@@ -1,9 +1,9 @@
-"use client";
-import Link from "next/link";
-import { FaCheck, FaQuoteLeft } from "react-icons/fa6";
-import { RxCross2 } from "react-icons/rx";
 import Image from "next/image";
-import Rating from "@/components/Rating";
+import {
+    Rating,
+    PricingCarousel,
+    // PricingCarousel2,
+} from "@/components/Pricing/";
 
 export default function Page() {
     const pricings = [
@@ -41,6 +41,7 @@ export default function Page() {
                     content: "3–6 months maintenance",
                 },
             ],
+            link: "#",
         },
         {
             tagline: "App Development Services",
@@ -76,6 +77,7 @@ export default function Page() {
                     content: "3–6 months post-launch support",
                 },
             ],
+            link: "#",
         },
         {
             tagline: "Graphic Design",
@@ -108,6 +110,79 @@ export default function Page() {
                     content: "Revisions as per scope",
                 },
             ],
+            link: "#",
+        },
+        {
+            tagline: "Web Development Services",
+            description:
+                "Ideal for individuals who need quick access to service features.",
+            price: {
+                start: 20000,
+                end: 500000,
+            },
+            features: [
+                {
+                    isHave: true,
+                    content: "Custom website design & development",
+                },
+                {
+                    isHave: true,
+                    content: "Up to 10-30 pages",
+                },
+                {
+                    isHave: true,
+                    content: "CMS integration (WordPress/Custom)",
+                },
+                {
+                    isHave: true,
+                    content: "Basic SEO setup",
+                },
+                {
+                    isHave: true,
+                    content: "Hosting & deployment support",
+                },
+                {
+                    isHave: true,
+                    content: "3–6 months maintenance",
+                },
+            ],
+            link: "#",
+        },
+        {
+            tagline: "Web Development Services",
+            description:
+                "Ideal for individuals who need quick access to service features.",
+            price: {
+                start: 20000,
+                end: 500000,
+            },
+            features: [
+                {
+                    isHave: true,
+                    content: "Custom website design & development",
+                },
+                {
+                    isHave: true,
+                    content: "Up to 10-30 pages",
+                },
+                {
+                    isHave: true,
+                    content: "CMS integration (WordPress/Custom)",
+                },
+                {
+                    isHave: true,
+                    content: "Basic SEO setup",
+                },
+                {
+                    isHave: true,
+                    content: "Hosting & deployment support",
+                },
+                {
+                    isHave: true,
+                    content: "3–6 months maintenance",
+                },
+            ],
+            link: "#",
         },
     ];
     const customers = [
@@ -150,51 +225,8 @@ export default function Page() {
                     projects with confidence.
                 </h3>
             </div>
-            <div className="first:bg-red mb-16 grid grid-cols-1 gap-4 md:grid-cols-3">
-                {pricings.map((pricing, index) => (
-                    <div
-                        key={index}
-                        className="first:bg-primary font-montserrat400 rounded-2xl border-2 border-slate-200 px-4 py-6 first:text-white"
-                    >
-                        <p className="font-manrope400 mb-2 text-xl font-bold">
-                            {pricing.tagline}
-                        </p>
-                        <p className="font-montserrat400 mb-4 text-sm">
-                            {pricing.description}
-                        </p>
-                        <p className="font-lato400 mb-4 text-2xl font-bold">
-                            &#8377;{pricing.price.start.toLocaleString()} -
-                            &#8377;
-                            {pricing.price.end.toLocaleString()}
-                        </p>
-                        <Link
-                            href=""
-                            className="border-primary mb-4 block rounded-xl border-2 py-2 text-center even:bg-white even:text-black"
-                        >
-                            Get Started Now
-                        </Link>
-                        <ul className="font-montserrat400">
-                            {pricing.features.map((feature, index) => (
-                                <li
-                                    key={index}
-                                    className="flex items-center py-1"
-                                >
-                                    <div className="rounded-full bg-slate-100 p-2">
-                                        {feature.isHave ? (
-                                            <FaCheck size={12} color="green" />
-                                        ) : (
-                                            <RxCross2 size={12} color="red" />
-                                        )}{" "}
-                                    </div>
-                                    <div className="ml-1">
-                                        {feature.content}
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                ))}
-            </div>
+            <PricingCarousel pricings={pricings} />
+            {/* <PricingCarousel2 pricings={pricings} /> */}
             <div>
                 <h1 className="font-lato400 my-6 mb-10 text-center text-5xl font-bold">
                     From Our Customers
