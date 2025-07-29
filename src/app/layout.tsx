@@ -9,7 +9,6 @@ import {
     DM_Sans,
     Manrope,
     Plus_Jakarta_Sans,
-
 } from "next/font/google";
 
 const lato400 = Lato({
@@ -53,7 +52,6 @@ const plusJakartaSans400 = Plus_Jakarta_Sans({
     subsets: ["latin"],
     variable: "--font-plusJakartaSans400",
 });
-
 
 // METADATA FOR THE PAGE
 export const metadata: Metadata = {
