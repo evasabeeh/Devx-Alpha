@@ -1,0 +1,5 @@
+PolySans -> Lato
+Poppins -> Montserrat
+
+Afacad -> Afacad
+Manrope -> Manrope
