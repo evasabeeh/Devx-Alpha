@@ -9,7 +9,6 @@ import {
     DM_Sans,
     Manrope,
     Plus_Jakarta_Sans,
-    Poppins,
 
 } from "next/font/google";
 
@@ -54,11 +53,7 @@ const plusJakartaSans400 = Plus_Jakarta_Sans({
     subsets: ["latin"],
     variable: "--font-plusJakartaSans400",
 });
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], 
-  variable: "--font-poppins", 
-});
+
 
 // METADATA FOR THE PAGE
 export const metadata: Metadata = {

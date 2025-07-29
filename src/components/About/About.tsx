@@ -1,5 +1,31 @@
 'use client';
 import Image from 'next/image';
+import { FaSearch, FaProjectDiagram, FaPaintBrush, FaRocket } from "react-icons/fa";
+
+
+const steps = [
+  {
+    title: "Discover",
+    description: "We understand your goals, audience, and vision.",
+    icon: <FaSearch className="text-red-600 text-3xl mt-1" />,
+  },
+  {
+    title: "Strategy",
+    description: "We plan a clear, effective roadmap for your project.",
+    icon: <FaProjectDiagram className="text-red-600 text-3xl mt-1" />,
+  },
+  {
+    title: "Design",
+    description: "We craft engaging, user-focused designs.",
+    icon: <FaPaintBrush className="text-red-600 text-3xl mt-1" />,
+  },
+  {
+    title: "Deliver",
+    description: "We launch your project with quality and care.",
+    icon: <FaRocket className="text-red-600 text-3xl mt-1" />,
+  },
+];
+
 
 export default function AboutPage() {
   return (
@@ -38,7 +64,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-    {/* second section */}
+      {/* second section */}
       <section className="w-full flex justify-center px-4 relative z-20 -mt-16 md:-mt-24">
 
 
@@ -106,36 +132,11 @@ export default function AboutPage() {
               </p>
 
             </div>
+
             <div className="flex flex-col gap-6 mt-10 px-4 sm:px-10">
-              {[
-                {
-                  title: "Discover",
-                  description: "We understand your goals, audience, and vision.",
-                  icon: "icon/Frame.png",
-                },
-                {
-                  title: "Strategy",
-                  description: "We plan a clear, effective roadmap for your project.",
-                  icon: "icon/Frame1.png",
-                },
-                {
-                  title: "Design",
-                  description: "We craft engaging, user-focused designs.",
-                  icon: "icon/Frame2.png",
-                },
-                {
-                  title: "Deliver",
-                  description: "We launch your project with quality and care.",
-                  icon: "icon/Frame3.png",
-                },
-              ].map((step, index) => (
+              {steps.map((step, index) => (
                 <div key={index} className="flex items-start gap-4">
-                  <div className="text-red-600 text-3xl"><img
-                    src={step.icon}
-                    alt={step.title}
-                    className="w-10 h-10 object-contain mt-1"
-                  />
-                  </div>
+                  <div>{step.icon}</div>
                   <div>
                     <h3 className="text-lg font-semibold">{step.title}</h3>
                     <p className="text-black text-sm">{step.description}</p>
@@ -143,7 +144,6 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-
           </div>
 
         </div>
@@ -228,7 +228,7 @@ export default function AboutPage() {
                 alt="John Doe"
                 className="w-full h-60 object-cover mb-0"
               />
-            
+
               <h3 className="text-base sm:text-lg font-semibold mt-2">Martin Rivera</h3>
               <p className="text-gray-500 text-sm sm:text-base">Co-Founder</p>
             </div>
