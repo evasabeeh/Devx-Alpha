@@ -40,7 +40,7 @@ export default function PricingCarousel({ pricings }: { pricings: Pricing[] }) {
             >
                 {pricings.map((pricing, index) => (
                     <SwiperSlide key={index}>
-                        <div className="rounded-2xl border-2 border-slate-200 px-4 py-6">
+                        <div className="hover:bg-primary cursor-pointer rounded-2xl border-2 border-slate-200 px-4 py-6 hover:text-white">
                             <p className="font-manrope400 mb-2 text-xl font-bold">
                                 {pricing.tagline}
                             </p>
@@ -53,7 +53,7 @@ export default function PricingCarousel({ pricings }: { pricings: Pricing[] }) {
                             </p>
                             <Link
                                 href={pricing.link || "#"}
-                                className="border-primary mb-4 block rounded-xl border-2 py-2 text-center even:bg-white even:text-black"
+                                className="border-primary mb-4 block rounded-xl border-2 bg-white py-2 text-center even:text-black"
                             >
                                 Get Started Now
                             </Link>
