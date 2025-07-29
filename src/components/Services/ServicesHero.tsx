@@ -23,8 +23,8 @@ export default function Hero({ title, description, image }: HeroProps) {
                     src={image}
                     alt="Background"
                     className="h-full w-full object-cover"
-                    width={100}
-                    height={100}
+                    width={500}
+                    height={500}
                 />
 
                 <div className="font-lato900 absolute top-[-100] right-[-120] hidden w-[80%] -translate-x-1/2 transform rounded-xl bg-white px-25 py-12 text-center sm:w-[70%] md:block md:w-[50%]">

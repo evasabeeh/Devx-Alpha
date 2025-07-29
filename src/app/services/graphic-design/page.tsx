@@ -1,4 +1,4 @@
-import Hero from "@/components/Services/Services-Hero";
+import Hero from "@/components/Services/ServicesHero";
 import Desc from "@/components/Services/Desc";
 
 const heroData = {

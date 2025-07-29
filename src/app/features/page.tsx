@@ -63,7 +63,7 @@ export default function Page() {
                     className="w-full"
                 />
             </div>
-            <div className="my-8 grid grid-cols-3 gap-4 px-20">
+            <div className="my-8 grid grid-cols-1 gap-4 px-4 sm:grid-cols-2 md:grid-cols-3 md:px-20">
                 {features.map((feature, index) => (
                     <div
                         key={index}
@@ -74,15 +74,15 @@ export default function Page() {
                         </h2>
                         <h3 className="mb-4">{feature.tagline}</h3>
                         <p>{index + 1}.</p>
-                        <div className="border-primary mx-auto mb-4 flex h-[250px] w-[250px] rounded-full border-2 transition-colors hover:border-white">
-                            <Image
-                                src={feature.image}
-                                alt={feature.heading}
-                                width={250}
-                                height={250}
-                                className="mx-auto"
-                            />
-                        </div>
+                        {/* <div className="border-primary mx-auto mb-4 flex h-[250px] w-[250px] rounded-full border-2 transition-colors hover:border-white"> */}
+                        <Image
+                            src={feature.image}
+                            alt={feature.heading}
+                            width={250}
+                            height={250}
+                            className="border-primary mx-auto rounded-full border-2 hover:border-white"
+                        />
+                        {/* </div> */}
                         <p className="text-sm">{feature.content}</p>
                     </div>
                 ))}
