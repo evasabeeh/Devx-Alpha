@@ -53,12 +53,12 @@ export default function Footer() {
                     <h3 className="mb-5 font-bold">Company</h3>
                     <ul className="list-none">
                         <li className="mb-2">
-                            <Link href="/" className="hover:underline">
+                            <Link href="/about" className="hover:underline">
                                 About
                             </Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="/" className="hover:underline">
+                            <Link href="/features" className="hover:underline">
                                 Features
                             </Link>
                         </li>
@@ -78,17 +78,17 @@ export default function Footer() {
                     <h3 className="mb-5 font-bold">Help</h3>
                     <ul>
                         <li className="mb-2">
-                            <Link href="" className="hover:underline">
+                            <Link href="/customers" className="hover:underline">
                                 Customer
                             </Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="" className="hover:underline">
+                            <Link href="/support" className="hover:underline">
                                 Support
                             </Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="" className="hover:underline">
+                            <Link href="/delivery" className="hover:underline">
                                 Delivery Details
                             </Link>
                         </li>
@@ -113,30 +113,21 @@ export default function Footer() {
                     <h3 className="mb-5 font-bold">Resources</h3>
                     <ul>
                         <li className="mb-2">
-                            <Link href="/" className="hover:underline">
+                            <Link href="/freeBook" className="hover:underline">
                                 Free eBooks
                             </Link>
                         </li>
                         <li className="mb-2">
                             <Link href="/" className="hover:underline">
-                                Development
+                                Our Team
                             </Link>
                         </li>
+                       
                         <li className="mb-2">
-                            <Link href="/" className="hover:underline">
-                                Tutorial
-                            </Link>
-                        </li>
-                        <li className="mb-2">
-                            <Link href="/" className="hover:underline">
+                            <Link href="/how-to-blog" className="hover:underline">
                                 How to Blog
                             </Link>
-                        </li>
-                        <li className="mb-2">
-                            <Link href="/" className="hover:underline">
-                                Youtube Playlist
-                            </Link>
-                        </li>
+                      </li>
                     </ul>
                 </div>
             </div>
