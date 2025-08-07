@@ -7,6 +7,8 @@ import {
     FaRocket,
 } from "react-icons/fa";
 
+import "./style.css";
+
 const steps = [
     {
         title: "Discover",
@@ -29,6 +31,46 @@ const steps = [
         icon: <FaRocket className="text-primary mt-1 text-3xl" />,
     },
 ];
+
+const teams = [
+    {
+        name: "Martin Rivera",
+        role: "Co-Founder",
+        image: "/teams/1.jpg",
+    },
+    {
+        name: "John Doe",
+        role: "Co-Founder",
+        image: "/teams/2.jpg",
+    },
+    {
+        name: "Anna Smith",
+        role: "UI/UX Designer",
+        image: "/teams/3.jpg",
+    },
+];
+
+function TeamCard({ team }: { team: (typeof teams)[0] }) {
+    return (
+        <div className="teams-item flex flex-col items-center rounded-b-sm p-0 text-center shadow-sm shadow-slate-400">
+            <Image
+                width={200}
+                height={200}
+                src={team.image}
+                alt={team.name + " image"}
+                className="h-60 w-full object-cover"
+            />
+            <div className="teams-item-content py-2">
+                <h3 className="text-base font-semibold sm:text-lg">
+                    {team.name}
+                </h3>
+                <p className="text-sm text-gray-500 sm:text-base">
+                    {team.role}
+                </p>
+            </div>
+        </div>
+    );
+}
 
 export default function AboutPage() {
     return (
@@ -215,42 +257,9 @@ export default function AboutPage() {
                     </p>
 
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
-                        <div className="m-0 flex flex-col items-center p-0 text-center">
-                            <Image
-                                width={100}
-                                height={100}
-                                src="/teams/1.jpg"
-                                alt="Martin Rivera"
-                                className="mb-0 h-60 w-full object-cover"
-                            />
-                        </div>
-
-                        <div className="m-0 flex flex-col items-center rounded-b-sm bg-white p-0 text-center shadow-md shadow-gray-400">
-                            <Image
-                                width={100}
-                                height={100}
-                                src="/teams/2.jpg"
-                                alt="John Doe"
-                                className="mb-0 h-60 w-full object-cover"
-                            />
-
-                            <h3 className="mt-2 text-base font-semibold sm:text-lg">
-                                Martin Rivera
-                            </h3>
-                            <p className="text-sm text-gray-500 sm:text-base">
-                                Co-Founder
-                            </p>
-                        </div>
-
-                        <div className="m-0 flex flex-col items-center p-0 text-center">
-                            <Image
-                                width={100}
-                                height={100}
-                                src="/teams/3.jpg"
-                                alt="Anna Smith"
-                                className="mb-0 h-60 w-full object-cover"
-                            />
-                        </div>
+                        {teams.map((team, index) => (
+                            <TeamCard key={index} team={team} />
+                        ))}
                     </div>
                 </div>
             </section>

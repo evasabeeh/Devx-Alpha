@@ -24,7 +24,7 @@ export default function Page() {
                         <Image
                             width={100}
                             height={100}
-                            src="/logo.png"
+                            src="/logo.svg"
                             alt="DevX Alpha"
                             className="mx-auto h-20 p-2"
                         />

@@ -3,7 +3,6 @@
 import { useState, useMemo } from "react";
 import { FaSearch } from "react-icons/fa";
 
-import Head from "next/head";
 import Image from "next/image";
 type Customer = {
     id: string;

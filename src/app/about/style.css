@@ -1,0 +1,9 @@
+.teams-item {
+    cursor: pointer;
+}
+.teams-item-content {
+    display: none;
+}
+.teams-item:hover .teams-item-content {
+    display: block;
+}

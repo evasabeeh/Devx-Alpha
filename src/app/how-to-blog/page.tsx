@@ -1,4 +1,3 @@
-// app/how-to/page.tsx
 "use client";
 
 import Image from "next/image";
