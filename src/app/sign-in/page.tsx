@@ -96,7 +96,7 @@ export default function Page() {
 
                         {!isForgotPassword && (
                             <p
-                                className="mt-1 mb-6 cursor-pointer text-right text-sm text-[#cb1919] underline"
+                                className="text-primary mt-1 mb-6 cursor-pointer text-right text-sm underline"
                                 onClick={() => setIsForgotPassword(true)}
                             >
                                 Forgot password?
@@ -105,7 +105,7 @@ export default function Page() {
 
                         <button
                             type="submit"
-                            className="font-lato400 mt-4 w-full cursor-pointer rounded-2xl bg-[#cb1919] py-3 font-semibold text-white hover:bg-red-900"
+                            className="font-lato400 bg-primary mt-4 w-full cursor-pointer rounded-2xl py-3 font-semibold text-white hover:bg-red-900"
                         >
                             {isForgotPassword ? "Confirm" : "Sign in"}
                         </button>

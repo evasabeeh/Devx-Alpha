@@ -9,7 +9,7 @@ export default function Page() {
             <h1 className="mb-6 text-4xl font-bold">Privacy Policy</h1>
 
             <p className="mb-6">
-                <strong className="text-red-600">DevX Alpha</strong> (“we”,
+                <strong className="text-primary">DevX Alpha</strong> (“we”,
                 “our”, or “us”) is committed to protecting your privacy. This
                 policy explains how we collect, use, and safeguard your
                 information when you visit our website or use our services.

@@ -81,7 +81,7 @@ export default function Page() {
 
                         <button
                             type="submit"
-                            className="font-lato400 mt-4 w-full cursor-pointer rounded-2xl bg-[#cb1919] py-3 font-semibold text-white hover:bg-red-900"
+                            className="font-lato400 bg-primary mt-4 w-full cursor-pointer rounded-2xl py-3 font-semibold text-white hover:bg-red-900"
                         >
                             Get Started
                         </button>

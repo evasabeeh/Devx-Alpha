@@ -9,7 +9,7 @@ export default function Page() {
             <h1 className="mb-6 text-4xl font-bold">Terms & Conditions</h1>
 
             <p className="mb-6">
-                Welcome to <strong className="text-red-500">DevX Alpha</strong>.
+                Welcome to <strong className="text-primary">DevX Alpha</strong>.
                 By accessing or using our website, services, or products, you
                 agree to be bound by the following Terms and Conditions. If you
                 do not agree, please do not use our services.

@@ -113,7 +113,7 @@ export default function Footer() {
                     <h3 className="mb-5 font-bold">Resources</h3>
                     <ul>
                         <li className="mb-2">
-                            <Link href="/freeBook" className="hover:underline">
+                            <Link href="/free-book" className="hover:underline">
                                 Free eBooks
                             </Link>
                         </li>
@@ -122,12 +122,15 @@ export default function Footer() {
                                 Our Team
                             </Link>
                         </li>
-                       
+
                         <li className="mb-2">
-                            <Link href="/how-to-blog" className="hover:underline">
+                            <Link
+                                href="/how-to-blog"
+                                className="hover:underline"
+                            >
                                 How to Blog
                             </Link>
-                      </li>
+                        </li>
                     </ul>
                 </div>
             </div>

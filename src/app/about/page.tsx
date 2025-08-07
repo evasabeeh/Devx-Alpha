@@ -11,22 +11,22 @@ const steps = [
     {
         title: "Discover",
         description: "We understand your goals, audience, and vision.",
-        icon: <FaSearch className="mt-1 text-3xl text-red-600" />,
+        icon: <FaSearch className="text-primary mt-1 text-3xl" />,
     },
     {
         title: "Strategy",
         description: "We plan a clear, effective roadmap for your project.",
-        icon: <FaProjectDiagram className="mt-1 text-3xl text-red-600" />,
+        icon: <FaProjectDiagram className="text-primary mt-1 text-3xl" />,
     },
     {
         title: "Design",
         description: "We craft engaging, user-focused designs.",
-        icon: <FaPaintBrush className="mt-1 text-3xl text-red-600" />,
+        icon: <FaPaintBrush className="text-primary mt-1 text-3xl" />,
     },
     {
         title: "Deliver",
         description: "We launch your project with quality and care.",
-        icon: <FaRocket className="mt-1 text-3xl text-red-600" />,
+        icon: <FaRocket className="text-primary mt-1 text-3xl" />,
     },
 ];
 
