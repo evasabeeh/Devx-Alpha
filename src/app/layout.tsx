@@ -60,6 +60,8 @@ export const metadata: Metadata = {
 };
 
 import { Navbar, Footer } from "@/components";
+import SessionProvider from "@/components/SessionProvider";
+import ToastProvider from "@/components/ToastProvider";
 
 export default function RootLayout({
     children,
@@ -80,9 +82,12 @@ export default function RootLayout({
             ].join(" ")}
         >
             <body className="bg-white text-black">
-                <Navbar />
-                {children}
-                <Footer />
+                <SessionProvider>
+                    <ToastProvider />
+                    <Navbar />
+                    {children}
+                    <Footer />
+                </SessionProvider>
             </body>
         </html>
     );

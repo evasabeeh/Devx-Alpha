@@ -10,3 +10,24 @@ Point to be notted :
 1. I have some custom field for the user that should be stored in the database after sign up completion like fullname, company, phone, image.
 2. After the sign up completion, user should be redirected to a page where he can complete his profile. This page should be accessible only after email verification. So add email verification as well.
 3. Also add the profile section of the user where he can view and edit his profile.
+
+
+
+
+Remove the column fullName from the database. Change the sign-up accordingly. Add the column phoneVerified. I didn't get the rows created in Account and Session table. Please fix that as well. Use jwt style for the authentication.
+I can't login with google. I got the error `auth/sign-in?error=OAuthAccountNotLinked`
+
+
+Implement the zod for data validation for the `sign up`, `sign in` and other forms. Also check validation at frontend side (for eg. Password should contain minimum 8 characters, email should be valid, etc.). If validation fails, show the error message below the form.
+Create the beautiful toast message that will tell the user about the error or success (for eg. if user login successfully, show the toast message `Login successful`, etc.).
+Remove the `Sign up` button from the navbar if user is logged in. Add the `Profile` button instead. Also after logged in don't allow to go to auth pages.
+I got the error when forgetting the password : auth/reset-password token=128108b7307b42b3842e3f92e18487f1ca0014ede375b9867415b09676d1d94e -> page not found. Fix it.
+
+
+I am getting `Validation failed` on sign up with credentials. Fix it.
+
+
+
+OAuthAccountNotLinked: Another account already exists with the same e-mail address. Read more at https://errors.authjs.dev#oauthaccountnotlinked
+
+Handle the above error. And show the toast message `Account already exists. Please login with your credentials or use other email.`

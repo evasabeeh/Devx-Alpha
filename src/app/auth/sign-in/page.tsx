@@ -1,13 +1,118 @@
 "use client";
 
-import React from "react";
-import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaEnvelope, FaLock } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import AuthGuard from "@/components/AuthGuard";
+import { signInSchema, type SignInFormData } from "@/lib/validations/auth";
+import { authToasts } from "@/lib/toast";
+import { ZodError } from "zod";
 
-export default function Page() {
+function SignInContent() {
+    const [formData, setFormData] = useState<SignInFormData>({
+        email: "",
+        password: "",
+    });
+    const [isLoading, setIsLoading] = useState(false);
+    const [errors, setErrors] = useState<
+        Partial<Record<keyof SignInFormData, string>>
+    >({});
+    const router = useRouter();
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+
+        // Clear error for this field when user starts typing
+        if (errors[name as keyof SignInFormData]) {
+            setErrors({
+                ...errors,
+                [name]: undefined,
+            });
+        }
+    };
+
+    const validateForm = () => {
+        try {
+            signInSchema.parse(formData);
+            setErrors({});
+            return true;
+        } catch (error) {
+            if (error instanceof ZodError) {
+                const fieldErrors: Partial<
+                    Record<keyof SignInFormData, string>
+                > = {};
+                error.issues.forEach((err) => {
+                    if (err.path[0]) {
+                        fieldErrors[err.path[0] as keyof SignInFormData] =
+                            err.message;
+                    }
+                });
+                setErrors(fieldErrors);
+            }
+            return false;
+        }
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        // Validate form before submission
+        if (!validateForm()) {
+            authToasts.signInError("Please fix the errors below");
+            return;
+        }
+
+        setIsLoading(true);
+
+        try {
+            const result = await signIn("credentials", {
+                email: formData.email,
+                password: formData.password,
+                redirect: false,
+            });
+
+            if (result?.error) {
+                authToasts.signInError("Invalid email or password");
+            } else {
+                authToasts.signInSuccess();
+                router.push("/profile");
+            }
+        } catch (error) {
+            console.error("Sign-in error:", error);
+            authToasts.networkError();
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleOAuthSignIn = async (provider: string) => {
+        setIsLoading(true);
+        console.log(`🔄 Starting OAuth sign-in with ${provider}`);
+
+        try {
+            // Temporarily use default redirect behavior to debug
+            await signIn(provider, {
+                callbackUrl: "/profile",
+            });
+
+            // This won't execute if redirect happens
+            console.log(`✅ OAuth sign-in initiated`);
+        } catch (error) {
+            console.error(`❌ OAuth exception:`, error);
+            authToasts.oauthError("OAuth sign-in failed. Please try again.");
+            setIsLoading(false);
+        }
+    };
+
     return (
         <div className="relative w-full overflow-hidden bg-white">
             <div className="relative z-10 flex w-full flex-col items-center justify-between gap-10 md:flex-row md:px-10 lg:mx-20">
@@ -29,30 +134,56 @@ export default function Page() {
                         </h1>
                     </div>
 
-                    <form className="font-lato400 mb-6 space-y-3">
-                        <div className="flex items-center rounded-2xl border px-4 py-2">
-                            <span className="mr-3">
-                                <FaEnvelope className="text-gray-400" />
-                            </span>
-                            <input
-                                name="email"
-                                type="email"
-                                placeholder="Email"
-                                className="w-full bg-transparent focus:outline-none"
-                                required
-                            />
+                    <form
+                        onSubmit={handleSubmit}
+                        className="font-lato400 mb-6 space-y-4"
+                    >
+                        <div>
+                            <div
+                                className={`flex items-center rounded-2xl border px-4 py-2 ${errors.email ? "border-red-400" : "border-gray-300"}`}
+                            >
+                                <span className="mr-3">
+                                    <FaEnvelope className="text-gray-400" />
+                                </span>
+                                <input
+                                    name="email"
+                                    type="email"
+                                    placeholder="Email"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                    className="w-full bg-transparent focus:outline-none"
+                                    disabled={isLoading}
+                                />
+                            </div>
+                            {errors.email && (
+                                <p className="mt-1 text-sm text-red-600">
+                                    {errors.email}
+                                </p>
+                            )}
                         </div>
-                        <div className="flex items-center rounded-2xl border px-4 py-2">
-                            <span className="mr-3">
-                                <FaLock className="text-gray-400" />
-                            </span>
-                            <input
-                                name="password"
-                                type="password"
-                                placeholder="Enter Password"
-                                className="w-full bg-transparent focus:outline-none"
-                                required
-                            />
+
+                        <div>
+                            <div
+                                className={`flex items-center rounded-2xl border px-4 py-2 ${errors.password ? "border-red-400" : "border-gray-300"}`}
+                            >
+                                <span className="mr-3">
+                                    <FaLock className="text-gray-400" />
+                                </span>
+                                <input
+                                    name="password"
+                                    type="password"
+                                    placeholder="Enter Password"
+                                    value={formData.password}
+                                    onChange={handleInputChange}
+                                    className="w-full bg-transparent focus:outline-none"
+                                    disabled={isLoading}
+                                />
+                            </div>
+                            {errors.password && (
+                                <p className="mt-1 text-sm text-red-600">
+                                    {errors.password}
+                                </p>
+                            )}
                         </div>
 
                         <div className="mt-1 mb-6 flex items-center justify-between">
@@ -66,9 +197,10 @@ export default function Page() {
 
                         <button
                             type="submit"
-                            className="font-lato400 bg-primary w-full cursor-pointer rounded-2xl py-3 font-semibold text-white hover:bg-red-900"
+                            disabled={isLoading}
+                            className="font-lato400 bg-primary w-full cursor-pointer rounded-2xl py-3 font-semibold text-white hover:bg-red-900 disabled:cursor-not-allowed disabled:opacity-50"
                         >
-                            Sign in
+                            {isLoading ? "Signing in..." : "Sign in"}
                         </button>
                     </form>
                     <p className="font-montserrat400 text-center text-sm">
@@ -86,8 +218,22 @@ export default function Page() {
                             Or continue with
                         </p>
                         <div className="flex justify-center space-x-6">
-                            <FcGoogle className="cursor-pointer text-2xl transition-transform hover:scale-110" />
-                            <FaGithub className="cursor-pointer text-2xl text-black transition-transform hover:scale-110" />
+                            <button
+                                type="button"
+                                onClick={() => handleOAuthSignIn("google")}
+                                disabled={isLoading}
+                                className="disabled:opacity-50"
+                            >
+                                <FcGoogle className="cursor-pointer text-2xl transition-transform hover:scale-110" />
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => handleOAuthSignIn("github")}
+                                disabled={isLoading}
+                                className="disabled:opacity-50"
+                            >
+                                <FaGithub className="cursor-pointer text-2xl text-black transition-transform hover:scale-110" />
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -114,5 +260,13 @@ export default function Page() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function Page() {
+    return (
+        <AuthGuard requireAuth={false} redirectTo="/profile">
+            <SignInContent />
+        </AuthGuard>
     );
 }

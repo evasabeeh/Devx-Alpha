@@ -1,11 +1,130 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { signUpSchema, type SignUpFormData } from "@/lib/validations/auth";
+import { authToasts } from "@/lib/toast";
+import { ZodError } from "zod";
+import AuthGuard from "@/components/AuthGuard";
 
-export default function Page() {
+function SignUpContent() {
+    const [formData, setFormData] = useState<SignUpFormData>({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+    });
+    const [isLoading, setIsLoading] = useState(false);
+    const [errors, setErrors] = useState<
+        Partial<Record<keyof SignUpFormData, string>>
+    >({});
+    const router = useRouter();
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+
+        // Clear error for this field when user starts typing
+        if (errors[name as keyof SignUpFormData]) {
+            setErrors({
+                ...errors,
+                [name]: undefined,
+            });
+        }
+    };
+
+    const validateForm = () => {
+        try {
+            signUpSchema.parse(formData);
+            setErrors({});
+            return true;
+        } catch (error) {
+            if (error instanceof ZodError) {
+                const fieldErrors: Partial<
+                    Record<keyof SignUpFormData, string>
+                > = {};
+                error.issues.forEach((err) => {
+                    if (err.path[0]) {
+                        fieldErrors[err.path[0] as keyof SignUpFormData] =
+                            err.message;
+                    }
+                });
+                setErrors(fieldErrors);
+            }
+            return false;
+        }
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        // Validate form before submission
+        if (!validateForm()) {
+            authToasts.signUpError("Please fix the errors below");
+            return;
+        }
+
+        setIsLoading(true);
+
+        try {
+            const response = await fetch("/api/auth/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: formData.email,
+                    password: formData.password,
+                    name: formData.name,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                authToasts.signUpSuccess();
+                // Redirect to sign-in page after success
+                setTimeout(() => {
+                    router.push("/auth/sign-in?message=check-email");
+                }, 2000);
+            } else {
+                authToasts.signUpError(data.error);
+            }
+        } catch (error) {
+            console.error("Registration error:", error);
+            authToasts.networkError();
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleOAuthSignIn = async (provider: string) => {
+        setIsLoading(true);
+        console.log(`🔄 Starting OAuth sign-up with ${provider}`);
+
+        try {
+            // Temporarily use default redirect behavior to debug
+            await signIn(provider, {
+                callbackUrl: "/profile/complete",
+            });
+
+            // This won't execute if redirect happens
+            console.log(`✅ OAuth sign-up initiated`);
+        } catch (error) {
+            console.error(`❌ OAuth exception:`, error);
+            authToasts.oauthError("OAuth sign-up failed. Please try again.");
+            setIsLoading(false);
+        }
+    };
     return (
         <div className="relative min-h-screen w-full overflow-hidden">
             <Image
@@ -37,57 +156,104 @@ export default function Page() {
                         </h1>
                     </div>
 
-                    <form className="font-lato400 mb-6 space-y-3">
-                        <div className="flex items-center rounded-2xl border border-white px-4 py-2">
-                            <span className="mr-3">
-                                <FaUser className="text-white" />
-                            </span>
-                            <input
-                                name="fullName"
-                                type="text"
-                                placeholder="Full Name"
-                                className="w-full bg-transparent text-white placeholder-white focus:outline-none"
-                                required
-                            />
+                    <form
+                        onSubmit={handleSubmit}
+                        className="font-lato400 mb-6 space-y-4"
+                    >
+                        <div>
+                            <div
+                                className={`flex items-center rounded-2xl border px-4 py-2 ${errors.name ? "border-red-400" : "border-white"}`}
+                            >
+                                <span className="mr-3">
+                                    <FaUser className="text-white" />
+                                </span>
+                                <input
+                                    name="name"
+                                    type="text"
+                                    placeholder="Full Name"
+                                    value={formData.name}
+                                    onChange={handleInputChange}
+                                    className="w-full bg-transparent text-white placeholder-white focus:outline-none"
+                                    disabled={isLoading}
+                                />
+                            </div>
+                            {errors.name && (
+                                <p className="mt-1 text-sm text-red-300">
+                                    {errors.name}
+                                </p>
+                            )}
                         </div>
 
-                        <div className="flex items-center rounded-2xl border border-white px-4 py-2">
-                            <span className="mr-3">
-                                <FaEnvelope className="text-white" />
-                            </span>
-                            <input
-                                name="email"
-                                type="email"
-                                placeholder="Email Address"
-                                className="w-full bg-transparent text-white placeholder-white focus:outline-none"
-                                required
-                            />
+                        <div>
+                            <div
+                                className={`flex items-center rounded-2xl border px-4 py-2 ${errors.email ? "border-red-400" : "border-white"}`}
+                            >
+                                <span className="mr-3">
+                                    <FaEnvelope className="text-white" />
+                                </span>
+                                <input
+                                    name="email"
+                                    type="email"
+                                    placeholder="Email Address"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                    className="w-full bg-transparent text-white placeholder-white focus:outline-none"
+                                    disabled={isLoading}
+                                />
+                            </div>
+                            {errors.email && (
+                                <p className="mt-1 text-sm text-red-300">
+                                    {errors.email}
+                                </p>
+                            )}
                         </div>
 
-                        <div className="flex items-center rounded-2xl border border-white px-4 py-2">
-                            <span className="mr-3">
-                                <FaLock className="text-white" />
-                            </span>
-                            <input
-                                name="password"
-                                type="password"
-                                placeholder="Create Password"
-                                className="w-full bg-transparent text-white placeholder-white focus:outline-none"
-                                required
-                            />
+                        <div>
+                            <div
+                                className={`flex items-center rounded-2xl border px-4 py-2 ${errors.password ? "border-red-400" : "border-white"}`}
+                            >
+                                <span className="mr-3">
+                                    <FaLock className="text-white" />
+                                </span>
+                                <input
+                                    name="password"
+                                    type="password"
+                                    placeholder="Create Password"
+                                    value={formData.password}
+                                    onChange={handleInputChange}
+                                    className="w-full bg-transparent text-white placeholder-white focus:outline-none"
+                                    disabled={isLoading}
+                                />
+                            </div>
+                            {errors.password && (
+                                <p className="mt-1 text-sm text-red-300">
+                                    {errors.password}
+                                </p>
+                            )}
                         </div>
 
-                        <div className="flex items-center rounded-2xl border border-white px-4 py-2">
-                            <span className="mr-3">
-                                <FaLock className="text-white" />
-                            </span>
-                            <input
-                                name="confirmPassword"
-                                type="text"
-                                placeholder="Confirm Password"
-                                className="w-full bg-transparent text-white placeholder-white focus:outline-none"
-                                required
-                            />
+                        <div>
+                            <div
+                                className={`flex items-center rounded-2xl border px-4 py-2 ${errors.confirmPassword ? "border-red-400" : "border-white"}`}
+                            >
+                                <span className="mr-3">
+                                    <FaLock className="text-white" />
+                                </span>
+                                <input
+                                    name="confirmPassword"
+                                    type="password"
+                                    placeholder="Confirm Password"
+                                    value={formData.confirmPassword}
+                                    onChange={handleInputChange}
+                                    className="w-full bg-transparent text-white placeholder-white focus:outline-none"
+                                    disabled={isLoading}
+                                />
+                            </div>
+                            {errors.confirmPassword && (
+                                <p className="mt-1 text-sm text-red-300">
+                                    {errors.confirmPassword}
+                                </p>
+                            )}
                         </div>
 
                         <p className="font-montserrat400 mt-2 text-xs text-gray-300">
@@ -97,9 +263,12 @@ export default function Page() {
 
                         <button
                             type="submit"
-                            className="font-lato400 bg-primary w-full cursor-pointer rounded-2xl py-3 font-semibold text-white hover:bg-red-900"
+                            disabled={isLoading}
+                            className="font-lato400 bg-primary w-full cursor-pointer rounded-2xl py-3 font-semibold text-white hover:bg-red-900 disabled:cursor-not-allowed disabled:opacity-50"
                         >
-                            Create Account
+                            {isLoading
+                                ? "Creating Account..."
+                                : "Create Account"}
                         </button>
                     </form>
                     <p className="font-montserrat400 text-center text-sm">
@@ -117,8 +286,22 @@ export default function Page() {
                             Or continue with
                         </p>
                         <div className="flex justify-center space-x-6">
-                            <FcGoogle className="cursor-pointer text-2xl transition-transform hover:scale-110" />
-                            <FaGithub className="cursor-pointer text-2xl text-white transition-transform hover:scale-110" />
+                            <button
+                                type="button"
+                                onClick={() => handleOAuthSignIn("google")}
+                                disabled={isLoading}
+                                className="disabled:opacity-50"
+                            >
+                                <FcGoogle className="cursor-pointer text-2xl transition-transform hover:scale-110" />
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => handleOAuthSignIn("github")}
+                                disabled={isLoading}
+                                className="disabled:opacity-50"
+                            >
+                                <FaGithub className="cursor-pointer text-2xl text-white transition-transform hover:scale-110" />
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -135,5 +318,13 @@ export default function Page() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function Page() {
+    return (
+        <AuthGuard requireAuth={false} redirectTo="/profile">
+            <SignUpContent />
+        </AuthGuard>
     );
 }

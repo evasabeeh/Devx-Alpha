@@ -4,33 +4,53 @@ import React, { useState } from "react";
 import { FaEnvelope, FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
+import AuthGuard from "@/components/AuthGuard";
+import { type ForgotPasswordFormData } from "@/lib/validations/auth";
+import { authToasts } from "@/lib/toast";
 
-export default function ForgotPasswordPage() {
-    const [email, setEmail] = useState("");
+function ForgotPasswordContent() {
+    const [formData, setFormData] = useState<ForgotPasswordFormData>({
+        email: "",
+    });
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState("");
+    const [errors, setErrors] = useState<
+        Partial<Record<keyof ForgotPasswordFormData, string>>
+    >({});
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setError("");
+        setErrors({});
         setIsLoading(true);
 
         // Basic email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            setError("Please enter a valid email address");
+        if (!emailRegex.test(formData.email)) {
+            setErrors({ email: "Please enter a valid email address" });
             setIsLoading(false);
             return;
         }
 
-        // Simulate API call
         try {
-            // Replace with actual API call
-            await new Promise((resolve) => setTimeout(resolve, 2000));
-            setIsSubmitted(true);
+            const response = await fetch("/api/auth/forgot-password", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setIsSubmitted(true);
+            } else {
+                authToasts.forgotPasswordError(
+                    data.error || "Something went wrong. Please try again."
+                );
+            }
         } catch {
-            setError("Something went wrong. Please try again.");
+            authToasts.networkError();
         } finally {
             setIsLoading(false);
         }
@@ -67,7 +87,7 @@ export default function ForgotPasswordPage() {
                             <p className="font-montserrat400 mb-6 text-gray-600">
                                 We&apos;ve sent a password reset link to{" "}
                                 <span className="font-semibold text-black">
-                                    {email}
+                                    {formData.email}
                                 </span>
                             </p>
                             <p className="font-montserrat400 mb-8 text-sm text-gray-500">
@@ -76,7 +96,7 @@ export default function ForgotPasswordPage() {
                                 <button
                                     onClick={() => {
                                         setIsSubmitted(false);
-                                        setEmail("");
+                                        setFormData({ email: "" });
                                     }}
                                     className="text-primary hover:underline"
                                 >
@@ -155,16 +175,20 @@ export default function ForgotPasswordPage() {
                             <input
                                 type="email"
                                 placeholder="Enter your email address"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                value={formData.email}
+                                onChange={(e) =>
+                                    setFormData({ email: e.target.value })
+                                }
                                 className="w-full bg-transparent focus:outline-none"
                                 required
                                 disabled={isLoading}
                             />
                         </div>
 
-                        {error && (
-                            <p className="text-sm text-red-600">{error}</p>
+                        {errors.email && (
+                            <p className="text-sm text-red-600">
+                                {errors.email}
+                            </p>
                         )}
 
                         <button
@@ -209,5 +233,13 @@ export default function ForgotPasswordPage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function ForgotPasswordPage() {
+    return (
+        <AuthGuard requireAuth={false} redirectTo="/profile">
+            <ForgotPasswordContent />
+        </AuthGuard>
     );
 }
