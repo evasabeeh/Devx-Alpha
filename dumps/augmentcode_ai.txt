@@ -1,0 +1,12 @@
+Analyze the code fully. Go the folder and see src/app/auth/ you will find `sign in` and `sign up` pages. Add a new page for forgot password instead of linking to sign in page. 
+Fix the `sign up` and `sign in` page with the corrected UI (Don't change the theme). Remove Facebook and apple login options. Add only google and github login options. Also Make the `sign in` button catchy with `Already have an account? Sign In` type UI. At Sign Up page, use minimilistic information to sign up (After sign up and verification, we can ask more information from the user). Also make the button as `Create Account`.
+
+
+
+Analyze the nextjs code fully. Implement nextauth to the project. There should be three providers google, github and credentials. Email should be unique. Email is the primary column which is used to login the user.
+Use prisma for database ORM. For development, use sqlite. For production, use postgres. 
+
+Point to be notted : 
+1. I have some custom field for the user that should be stored in the database after sign up completion like fullname, company, phone, image.
+2. After the sign up completion, user should be redirected to a page where he can complete his profile. This page should be accessible only after email verification. So add email verification as well.
+3. Also add the profile section of the user where he can view and edit his profile.

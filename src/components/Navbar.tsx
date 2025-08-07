@@ -102,7 +102,7 @@ const Navbar = () => {
 
                     <li>
                         <Link
-                            href="/sign-up"
+                            href="/auth/sign-up"
                             className="rounded-full border-2 border-white px-6 py-2 transition hover:bg-white hover:text-black"
                         >
                             Sign Up
