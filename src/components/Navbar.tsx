@@ -83,26 +83,44 @@ const Navbar = () => {
                                     onMouseEnter={handleServicesMouseEnter}
                                     onMouseLeave={handleServicesMouseLeave}
                                 >
-                                    <div className="flex cursor-pointer items-center gap-1 capitalize hover:text-gray-300">
-                                        Services <IoIosArrowDown />
+                                    <div className="flex cursor-pointer items-center gap-1 capitalize hover:text-gray-300 transition-colors duration-200">
+                                        Services
+                                        <IoIosArrowDown className={`transition-transform duration-200 ${isServicesHovered ? 'rotate-180' : ''}`} />
                                     </div>
                                     {isServicesHovered && (
-                                        <div className="fixed top-[64px] left-0 z-20 w-screen bg-white shadow-lg">
-                                            <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-16 gap-y-4 px-12 py-8 text-black">
-                                                {serviceLinks.map((sublink) => (
-                                                    <Link
-                                                        key={sublink.name}
-                                                        href={sublink.href}
-                                                        className="block text-lg font-medium capitalize transition hover:text-red-500"
-                                                        onClick={() =>
-                                                            setIsServicesHovered(
-                                                                false
-                                                            )
-                                                        }
-                                                    >
-                                                        {sublink.name}
-                                                    </Link>
-                                                ))}
+                                        <div className="fixed top-[64px] left-0 z-50 w-screen bg-gradient-to-br from-white to-gray-50 shadow-2xl border-t-4 border-red-500 transform transition-all duration-300 ease-out opacity-100 translate-y-0">
+                                            <div className="mx-auto max-w-7xl px-8 py-10">
+                                                <div className="mb-6">
+                                                    <h3 className="text-2xl font-bold text-gray-800 mb-2">Our Services</h3>
+                                                    <p className="text-gray-600">Comprehensive solutions for your business needs</p>
+                                                </div>
+                                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                                    {serviceLinks.map((sublink, index) => (
+                                                        <Link
+                                                            key={sublink.name}
+                                                            href={sublink.href}
+                                                            className="group relative overflow-hidden rounded-xl bg-white p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:scale-105 border border-gray-100"
+                                                            onClick={() =>
+                                                                setIsServicesHovered(
+                                                                    false
+                                                                )
+                                                            }
+                                                        >
+                                                            <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-600 opacity-0 transition-opacity duration-300 group-hover:opacity-10"></div>
+                                                            <div className="relative z-10">
+                                                                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-red-50 text-red-500 group-hover:bg-red-500 group-hover:text-white transition-colors duration-300">
+                                                                    <span className="text-xl font-bold">{index + 1}</span>
+                                                                </div>
+                                                                <h4 className="text-lg font-semibold text-gray-800 group-hover:text-red-600 transition-colors duration-300 capitalize">
+                                                                    {sublink.name}
+                                                                </h4>
+                                                                <p className="mt-2 text-sm text-gray-600 group-hover:text-gray-700">
+                                                                    Professional {sublink.name.toLowerCase()} services
+                                                                </p>
+                                                            </div>
+                                                        </Link>
+                                                    ))}
+                                                </div>
                                             </div>
                                         </div>
                                     )}
@@ -197,7 +215,7 @@ const Navbar = () => {
                                                     !isServicesOpen
                                                 )
                                             }
-                                            className="flex w-full items-center justify-between text-left capitalize"
+                                            className="flex w-full items-center justify-between text-left capitalize py-2 px-1 rounded-md transition-colors duration-200 hover:bg-gray-800"
                                         >
                                             Services{" "}
                                             <IoIosArrowDown
@@ -208,29 +226,37 @@ const Navbar = () => {
                                                 }`}
                                             />
                                         </button>
-                                        {isServicesHovered && (
-                                            <div className="absolute top-full left-0 z-20 w-screen bg-white shadow-lg">
-                                                <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-6 px-6 py-4 text-black">
-                                                    {serviceLinks.map(
-                                                        (sublink) => (
+                                        {isServicesOpen && (
+                                            <div className="mt-4 overflow-hidden rounded-lg bg-gradient-to-br from-gray-900 to-gray-800 shadow-xl border border-gray-700 transform transition-all duration-300 ease-out opacity-100 scale-100">
+                                                <div className="p-4">
+                                                    <div className="mb-3">
+                                                        <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wide">Our Services</h4>
+                                                    </div>
+                                                    <div className="space-y-2">
+                                                        {serviceLinks.map((sublink, index) => (
                                                             <Link
-                                                                key={
-                                                                    sublink.name
-                                                                }
-                                                                href={
-                                                                    sublink.href
-                                                                }
-                                                                className="min-w-[180px] rounded-md px-4 py-2 text-center capitalize transition hover:bg-gray-200"
-                                                                onClick={() =>
-                                                                    setIsServicesHovered(
-                                                                        false
-                                                                    )
-                                                                }
+                                                                key={sublink.name}
+                                                                href={sublink.href}
+                                                                className="group flex items-center justify-between rounded-lg bg-gray-800 p-3 transition-all duration-200 hover:bg-red-500 hover:shadow-lg"
+                                                                onClick={() => {
+                                                                    setIsServicesOpen(false);
+                                                                    setIsOpen(false);
+                                                                }}
                                                             >
-                                                                {sublink.name}
+                                                                <div className="flex items-center space-x-3">
+                                                                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white group-hover:bg-white group-hover:text-red-500 transition-colors duration-200">
+                                                                        {index + 1}
+                                                                    </div>
+                                                                    <span className="text-sm font-medium text-white capitalize group-hover:text-white">
+                                                                        {sublink.name}
+                                                                    </span>
+                                                                </div>
+                                                                <svg className="h-4 w-4 text-gray-400 group-hover:text-white transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                                                </svg>
                                                             </Link>
-                                                        )
-                                                    )}
+                                                        ))}
+                                                    </div>
                                                 </div>
                                             </div>
                                         )}
