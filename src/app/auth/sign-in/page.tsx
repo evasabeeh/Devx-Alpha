@@ -96,16 +96,12 @@ function SignInContent() {
 
     const handleOAuthSignIn = async (provider: string) => {
         setIsLoading(true);
-        console.log(`🔄 Starting OAuth sign-in with ${provider}`);
 
         try {
             // Temporarily use default redirect behavior to debug
             await signIn(provider, {
                 callbackUrl: "/profile",
             });
-
-            // This won't execute if redirect happens
-            console.log(`✅ OAuth sign-in initiated`);
         } catch (error) {
             console.error(`❌ OAuth exception:`, error);
             authToasts.oauthError("OAuth sign-in failed. Please try again.");

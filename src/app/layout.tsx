@@ -62,6 +62,8 @@ export const metadata: Metadata = {
 import { Navbar, Footer } from "@/components";
 import SessionProvider from "@/components/SessionProvider";
 import ToastProvider from "@/components/ToastProvider";
+import ReduxProvider from "@/components/ReduxProvider";
+import AuthSyncWrapper from "@/components/AuthSyncWrapper";
 
 export default function RootLayout({
     children,
@@ -82,12 +84,16 @@ export default function RootLayout({
             ].join(" ")}
         >
             <body className="bg-white text-black">
-                <SessionProvider>
-                    <ToastProvider />
-                    <Navbar />
-                    {children}
-                    <Footer />
-                </SessionProvider>
+                <ReduxProvider>
+                    <SessionProvider>
+                        <AuthSyncWrapper>
+                            <ToastProvider />
+                            <Navbar />
+                            {children}
+                            <Footer />
+                        </AuthSyncWrapper>
+                    </SessionProvider>
+                </ReduxProvider>
             </body>
         </html>
     );

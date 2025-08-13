@@ -13,26 +13,26 @@ import {
     FaSignOutAlt,
 } from "react-icons/fa";
 import Image from "next/image";
-import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-
-interface UserProfile {
-    id: string;
-    email: string;
-    name: string | null;
-    company: string | null;
-    phone: string | null;
-    image: string | null;
-    emailVerified: Date | null;
-}
+import { useUser } from "@/lib/redux";
+import { useSession } from "next-auth/react";
 
 export default function ProfilePage() {
-    const { data: session, status } = useSession();
     const router = useRouter();
-    const [profile, setProfile] = useState<UserProfile | null>(null);
+    const { update: updateSession } = useSession();
+    const {
+        user,
+        isAuthenticated,
+        isLoading: userLoading,
+        error: userError,
+        updateUserProfile,
+        setUserError,
+        clearUserError,
+        logout,
+    } = useUser();
+
     const [isEditing, setIsEditing] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const [editData, setEditData] = useState({
         name: "",
@@ -42,33 +42,20 @@ export default function ProfilePage() {
     });
 
     useEffect(() => {
-        if (status === "loading") return;
-
-        if (!session) {
+        if (!isAuthenticated && !userLoading) {
             router.push("/auth/sign-in");
             return;
         }
 
-        fetchProfile();
-    }, [session, status, router]);
-
-    const fetchProfile = async () => {
-        try {
-            const response = await fetch("/api/profile");
-            if (response.ok) {
-                const data = await response.json();
-                setProfile(data.user);
-                setEditData({
-                    name: data.user.name || "",
-                    company: data.user.company || "",
-                    phone: data.user.phone || "",
-                    image: data.user.image || "",
-                });
-            }
-        } catch (error) {
-            console.error("Error fetching profile:", error);
+        if (user) {
+            setEditData({
+                name: user.name || "",
+                company: user.company || "",
+                phone: user.phone || "",
+                image: user.image || "",
+            });
         }
-    };
+    }, [user, isAuthenticated, userLoading, router]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEditData({
@@ -79,25 +66,25 @@ export default function ProfilePage() {
 
     const handleEdit = () => {
         setIsEditing(true);
-        setError("");
+        clearUserError();
         setSuccess("");
     };
 
     const handleCancel = () => {
         setIsEditing(false);
         setEditData({
-            name: profile?.name || "",
-            company: profile?.company || "",
-            phone: profile?.phone || "",
-            image: profile?.image || "",
+            name: user?.name || "",
+            company: user?.company || "",
+            phone: user?.phone || "",
+            image: user?.image || "",
         });
-        setError("");
+        clearUserError();
         setSuccess("");
     };
 
     const handleSave = async () => {
         setIsLoading(true);
-        setError("");
+        clearUserError();
         setSuccess("");
 
         try {
@@ -112,25 +99,33 @@ export default function ProfilePage() {
             const data = await response.json();
 
             if (response.ok) {
-                setProfile(data.user);
+                // Update Redux store with fresh data from API response
+                if (data.user) {
+                    updateUserProfile(data.user);
+
+                    // Also update NextAuth session to persist changes across page refreshes
+                    await updateSession({
+                        user: data.user,
+                    });
+                }
                 setIsEditing(false);
                 setSuccess("Profile updated successfully!");
                 setTimeout(() => setSuccess(""), 3000);
             } else {
-                setError(data.error || "Failed to update profile");
+                setUserError(data.error || "Failed to update profile");
             }
         } catch (error) {
-            setError("Something went wrong. Please try again.");
+            setUserError("Something went wrong. Please try again.");
         } finally {
             setIsLoading(false);
         }
     };
 
     const handleSignOut = async () => {
-        await signOut({ callbackUrl: "/" });
+        await logout("/");
     };
 
-    if (status === "loading") {
+    if (userLoading) {
         return (
             <div className="flex min-h-screen items-center justify-center">
                 <div className="text-center">
@@ -141,7 +136,7 @@ export default function ProfilePage() {
         );
     }
 
-    if (!session || !profile) {
+    if (!isAuthenticated || !user) {
         return null;
     }
 
@@ -154,9 +149,9 @@ export default function ProfilePage() {
                         <div className="flex items-center justify-between">
                             <div className="flex items-center space-x-4">
                                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/20">
-                                    {profile.image ? (
+                                    {user.image ? (
                                         <Image
-                                            src={profile.image}
+                                            src={user.image}
                                             alt="Profile"
                                             width={64}
                                             height={64}
@@ -168,10 +163,10 @@ export default function ProfilePage() {
                                 </div>
                                 <div>
                                     <h1 className="text-2xl font-bold text-white">
-                                        {profile.name || "User"}
+                                        {user.name || "User"}
                                     </h1>
                                     <p className="text-white/80">
-                                        {profile.email}
+                                        {user.email}
                                     </p>
                                 </div>
                             </div>
@@ -187,9 +182,9 @@ export default function ProfilePage() {
 
                     {/* Content */}
                     <div className="p-8">
-                        {error && (
+                        {userError && (
                             <div className="mb-6 rounded-lg bg-red-50 p-4 text-sm text-red-600">
-                                {error}
+                                {userError}
                             </div>
                         )}
 
@@ -257,7 +252,7 @@ export default function ProfilePage() {
                                     <div className="flex items-center rounded-lg bg-gray-50 px-4 py-3">
                                         <FaUser className="mr-3 text-gray-400" />
                                         <span className="text-gray-900">
-                                            {profile.name || "Not provided"}
+                                            {user.name || "Not provided"}
                                         </span>
                                     </div>
                                 )}
@@ -271,9 +266,9 @@ export default function ProfilePage() {
                                 <div className="flex items-center rounded-lg bg-gray-50 px-4 py-3">
                                     <FaEnvelope className="mr-3 text-gray-400" />
                                     <span className="text-gray-900">
-                                        {profile.email}
+                                        {user.email}
                                     </span>
-                                    {profile.emailVerified && (
+                                    {user.emailVerified && (
                                         <span className="ml-2 rounded bg-green-100 px-2 py-1 text-xs text-green-800">
                                             Verified
                                         </span>
@@ -303,7 +298,7 @@ export default function ProfilePage() {
                                     <div className="flex items-center rounded-lg bg-gray-50 px-4 py-3">
                                         <FaBuilding className="mr-3 text-gray-400" />
                                         <span className="text-gray-900">
-                                            {profile.company || "Not provided"}
+                                            {user.company || "Not provided"}
                                         </span>
                                     </div>
                                 )}
@@ -331,7 +326,7 @@ export default function ProfilePage() {
                                     <div className="flex items-center rounded-lg bg-gray-50 px-4 py-3">
                                         <FaPhone className="mr-3 text-gray-400" />
                                         <span className="text-gray-900">
-                                            {profile.phone || "Not provided"}
+                                            {user.phone || "Not provided"}
                                         </span>
                                     </div>
                                 )}
@@ -359,7 +354,7 @@ export default function ProfilePage() {
                                     <div className="flex items-center rounded-lg bg-gray-50 px-4 py-3">
                                         <FaImage className="mr-3 text-gray-400" />
                                         <span className="text-gray-900">
-                                            {profile.image || "Not provided"}
+                                            {user.image || "Not provided"}
                                         </span>
                                     </div>
                                 )}

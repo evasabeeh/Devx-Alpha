@@ -4,15 +4,20 @@ import { IoCodeSlash, IoSearch, IoSyncSharp } from "react-icons/io5";
 import { RiComputerLine } from "react-icons/ri";
 import { FiShoppingCart, FiSettings } from "react-icons/fi";
 import { MdOutlineTabletAndroid, MdOutlineChat } from "react-icons/md";
-import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { IoMdCheckmarkCircleOutline, IoMdConstruct } from "react-icons/io";
 import {
     LuDiamond,
     LuImage,
     LuCircleDot,
     LuChevronsLeftRight,
+    LuTestTube,
 } from "react-icons/lu";
-import { AiOutlineApi } from "react-icons/ai";
-import { BsLayoutSidebarReverse, BsFileBarGraph } from "react-icons/bs";
+import { AiOutlineApi, AiOutlineFunction } from "react-icons/ai";
+import {
+    BsLayoutSidebarReverse,
+    BsFileBarGraph,
+    BsMotherboard,
+} from "react-icons/bs";
 import { FaRegClock } from "react-icons/fa6";
 import { TbCube } from "react-icons/tb";
 import {
@@ -21,6 +26,8 @@ import {
     PiBrowser,
     PiAppWindow,
     PiShareNetwork,
+    PiStack,
+    PiWaveSine,
 } from "react-icons/pi";
 import { HiOutlineDeviceMobile } from "react-icons/hi";
 import { LiaLocationArrowSolid } from "react-icons/lia";
@@ -58,36 +65,37 @@ const Icons = {
     RiComputerLine,
     MdOutlineTabletAndroid,
     FiShoppingCart,
-
     LuDiamond,
     AiOutlineApi,
     BsLayoutSidebarReverse,
     PiAppWindow,
     PiShareNetwork,
-
     FaRegClock,
     LuImage,
     TbCube,
     BsFileBarGraph,
     PiBrowser,
-
     PiUser,
     HiOutlineDeviceMobile,
     PiSquaresFour,
     LiaLocationArrowSolid,
     LuChevronsLeftRight,
-
     HiMiniArrowTrendingUp,
     HiOutlineChatBubbleOvalLeft,
     LuCircleDot,
     MdOutlineChat,
     IoSyncSharp,
-
     GoGlobe,
     FiSettings,
     BiCheckShield,
     HiOutlineArrowUpTray,
     BsPlugin,
+    BsMotherboard,
+    PiStack,
+    AiOutlineFunction,
+    LuTestTube,
+    IoMdConstruct,
+    PiWaveSine,
 };
 
 export default function Desc({ data }: DescProps) {
@@ -124,11 +132,11 @@ export default function Desc({ data }: DescProps) {
                                         key={idx}
                                         className="flex h-full flex-col justify-between rounded-md bg-[#fbfbff] p-5 shadow-md"
                                     >
-                                        <h3 className="font-lato900 text-md font-semibold">
+                                        <h3 className="font-lato900 text-md flex items-center gap-2 font-semibold">
+                                            {renderIcon(card.icon)}
                                             {card.title}
                                         </h3>
-                                        <p className="font-lato400 mt-6 text-xs leading-relaxed text-gray-700">
-                                            <span>{renderIcon(card.icon)}</span>
+                                        <p className="font-lato400 mt-4 text-xs leading-relaxed text-gray-700">
                                             {card.description}
                                         </p>
                                     </div>
@@ -144,13 +152,11 @@ export default function Desc({ data }: DescProps) {
                                             key={idx}
                                             className="flex h-full flex-col justify-between rounded-md bg-[#fbfbff] p-5 shadow-md"
                                         >
-                                            <h3 className="font-lato900 text-md font-semibold">
+                                            <h3 className="font-lato900 text-md flex items-center gap-2 font-semibold">
+                                                {renderIcon(card.icon)}
                                                 {card.title}
                                             </h3>
-                                            <p className="font-lato400 mt-6 text-xs leading-relaxed text-gray-700">
-                                                <span>
-                                                    {renderIcon(card.icon)}
-                                                </span>
+                                            <p className="font-lato400 mt-4 text-xs leading-relaxed text-gray-700">
                                                 {card.description}
                                             </p>
                                         </div>

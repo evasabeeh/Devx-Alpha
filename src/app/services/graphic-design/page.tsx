@@ -1,6 +1,6 @@
 import Hero from "@/components/Services/ServicesHero";
 import Desc from "@/components/Services/Desc";
-
+import Link from "next/link";
 const heroData = {
     title: "Graphic Design",
     description:
@@ -85,9 +85,12 @@ export default function Page() {
                         <p className="text-xs font-bold md:text-sm">
                             Ready to create your perfect software? We are!
                         </p>
-                        <button className="bg-primary rounded-full px-6 py-1 text-xs text-white transition md:text-sm">
+                        <Link
+                            href="/contact"
+                            className="bg-primary rounded-full px-6 py-1 text-xs text-white transition md:text-sm"
+                        >
                             Contact Us
-                        </button>
+                        </Link>
                     </div>
                 </div>
 

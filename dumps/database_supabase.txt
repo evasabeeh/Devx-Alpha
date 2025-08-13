@@ -1,1 +1,9 @@
-password : devx-alpha1452
+gmail : devxalphaa@gmail.com
+password : #P@nd!Tj!01$
+
+supabase-password : devx-alpha1452
+
+live : https://devx-alpha-theta.vercel.app/
+
+github-username : devxalphaa-in
+github-password : devxalpha1452

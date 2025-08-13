@@ -55,6 +55,8 @@ const Navbar = () => {
         { name: "UI/UX Design", href: "/services/uiux-design" },
         { name: "AI Solutions", href: "/services/ai-solutions" },
         { name: "CMS Development", href: "/services/cms-development" },
+        { name: "PCB Design", href: "/services/PCB-design" },
+        { name: "Accounting Professional", href: "/services/accounting" },
     ];
 
     return (
@@ -84,12 +86,13 @@ const Navbar = () => {
                                         Services <IoIosArrowDown />
                                     </div>
                                     {isServicesHovered && (
-                                        <ul className="absolute top-full left-0 z-20 w-50 rounded-md bg-white py-2 text-black shadow-lg">
-                                            {serviceLinks.map((sublink) => (
-                                                <li key={sublink.name}>
+                                        <div className="fixed top-[64px] left-0 z-20 w-screen bg-white shadow-lg">
+                                            <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-16 gap-y-4 px-12 py-8 text-black">
+                                                {serviceLinks.map((sublink) => (
                                                     <Link
+                                                        key={sublink.name}
                                                         href={sublink.href}
-                                                        className="block px-4 py-2 capitalize hover:bg-gray-200"
+                                                        className="block text-lg font-medium capitalize transition hover:text-red-500"
                                                         onClick={() =>
                                                             setIsServicesHovered(
                                                                 false
@@ -98,9 +101,9 @@ const Navbar = () => {
                                                     >
                                                         {sublink.name}
                                                     </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                                ))}
+                                            </div>
+                                        </div>
                                     )}
                                 </div>
                             ) : (
@@ -204,26 +207,31 @@ const Navbar = () => {
                                                 }`}
                                             />
                                         </button>
-                                        {isServicesOpen && (
-                                            <ul className="mt-5 space-y-5 text-center text-sm text-white">
-                                                {serviceLinks.map((sublink) => (
-                                                    <li key={sublink.name}>
-                                                        <Link
-                                                            href={sublink.href}
-                                                            onClick={() => {
-                                                                setIsOpen(
-                                                                    false
-                                                                );
-                                                                setIsServicesOpen(
-                                                                    false
-                                                                );
-                                                            }}
-                                                        >
-                                                            {sublink.name}
-                                                        </Link>
-                                                    </li>
-                                                ))}
-                                            </ul>
+                                        {isServicesHovered && (
+                                            <div className="absolute top-full left-0 z-20 w-screen bg-white shadow-lg">
+                                                <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-6 px-6 py-4 text-black">
+                                                    {serviceLinks.map(
+                                                        (sublink) => (
+                                                            <Link
+                                                                key={
+                                                                    sublink.name
+                                                                }
+                                                                href={
+                                                                    sublink.href
+                                                                }
+                                                                className="min-w-[180px] rounded-md px-4 py-2 text-center capitalize transition hover:bg-gray-200"
+                                                                onClick={() =>
+                                                                    setIsServicesHovered(
+                                                                        false
+                                                                    )
+                                                                }
+                                                            >
+                                                                {sublink.name}
+                                                            </Link>
+                                                        )
+                                                    )}
+                                                </div>
+                                            </div>
                                         )}
                                     </>
                                 ) : (

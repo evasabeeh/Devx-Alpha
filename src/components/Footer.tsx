@@ -63,7 +63,7 @@ export default function Footer() {
                             </Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="/" className="hover:underline">
+                            <Link href="/career" className="hover:underline">
                                 Career
                             </Link>
                         </li>

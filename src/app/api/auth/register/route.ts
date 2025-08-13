@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
@@ -9,15 +11,10 @@ import { ZodError } from "zod";
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
-
-        // Validate input with Zod
-        console.log("📝 Registration request body:", body);
         try {
             const validatedData = signUpApiSchema.parse(body);
-            console.log("✅ Validation passed:", validatedData);
         } catch (error) {
             if (error instanceof ZodError) {
-                console.log("❌ Validation failed:", error.issues);
                 const fieldErrors = error.issues.map((err) => ({
                     field: err.path[0],
                     message: err.message,
@@ -27,7 +24,6 @@ export async function POST(request: NextRequest) {
                     { status: 400 }
                 );
             }
-            console.log("❌ Unknown validation error:", error);
             return NextResponse.json(
                 { error: "Invalid input data" },
                 { status: 400 }

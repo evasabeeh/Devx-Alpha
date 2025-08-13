@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import NextAuth from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import Google from "next-auth/providers/google";
@@ -50,12 +52,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 if (!isPasswordValid) {
                     return null;
                 }
-
                 return {
                     id: user.id,
                     email: user.email,
                     name: user.name,
                     image: user.image,
+                    company: user.company,
+                    phone: user.phone,
+                    phoneVerified: user.phoneVerified,
+                    emailVerified: user.emailVerified,
+                    createdAt: user.createdAt,
+                    updatedAt: user.updatedAt,
                 };
             },
         }),
@@ -65,51 +72,57 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         error: "/auth/error",
     },
     callbacks: {
-        async jwt({ token, user, account }) {
-            console.log("🔍 JWT callback:", {
-                hasUser: !!user,
-                hasAccount: !!account,
-                provider: account?.provider,
-                tokenSub: token.sub,
-            });
-
+        async jwt({ token, user, trigger, session }) {
+            // Initial sign in - store basic user data
             if (user) {
                 token.id = user.id;
-                console.log(`✅ JWT: Added user ID ${user.id} to token`);
+                token.email = user.email;
+                token.name = user.name;
+                token.image = user.image;
+                token.company = user.company;
+                token.phone = user.phone;
+                token.phoneVerified = user.phoneVerified;
+                token.emailVerified = user.emailVerified;
+                token.createdAt = user.createdAt;
+                token.updatedAt = user.updatedAt;
             }
+
+            // Handle session updates (when updateSession is called)
+            if (trigger === "update" && session?.user) {
+                token.name = session.user.name;
+                token.company = session.user.company;
+                token.phone = session.user.phone;
+                token.image = session.user.image;
+                token.phoneVerified = session.user.phoneVerified;
+                token.emailVerified = session.user.emailVerified;
+                token.updatedAt = session.user.updatedAt;
+            }
+
             return token;
         },
         async session({ session, token }) {
-            console.log("🔍 Session callback:", {
-                tokenId: token.id,
-                sessionEmail: session.user?.email,
-            });
-
             if (token) {
                 session.user.id = token.id as string;
+                session.user.email = token.email as string;
+                session.user.name = token.name as string;
+                session.user.company = token.company as string;
+                session.user.phone = token.phone as string;
+                session.user.phoneVerified = token.phoneVerified as Date;
+                session.user.image = token.image as string;
+                session.user.emailVerified = token.emailVerified as Date;
+                session.user.createdAt = token.createdAt as Date;
+                session.user.updatedAt = token.updatedAt as Date;
             }
             return session;
         },
-        async signIn({ user, account }) {
-            console.log("🔍 SignIn callback triggered:", {
-                provider: account?.provider,
-                email: user.email,
-                name: user.name,
-            });
-
+        async signIn({ account }) {
             // For OAuth providers, temporarily allow all to debug
             if (
                 account?.provider === "google" ||
                 account?.provider === "github"
-            ) {
-                console.log(
-                    `✅ OAuth sign-in allowed for ${account.provider}: ${user.email}`
-                );
+            )
                 return true;
-            }
 
-            // For credentials provider, always allow
-            console.log("✅ Credentials sign-in allowed");
             return true;
         },
     },

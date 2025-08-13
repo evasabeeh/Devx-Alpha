@@ -6,7 +6,7 @@ export async function GET() {
     try {
         const session = await auth();
 
-        if (!session?.user?.email) {
+        if (!session?.user?.id) {
             return NextResponse.json(
                 { error: "Unauthorized" },
                 { status: 401 }
@@ -14,16 +14,18 @@ export async function GET() {
         }
 
         const user = await prisma.user.findUnique({
-            where: { email: session.user.email },
+            where: { id: session.user.id },
             select: {
                 id: true,
                 email: true,
                 name: true,
                 company: true,
                 phone: true,
+                phoneVerified: true,
                 image: true,
                 emailVerified: true,
                 createdAt: true,
+                updatedAt: true,
             },
         });
 
@@ -50,7 +52,7 @@ export async function PUT(request: NextRequest) {
     try {
         const session = await auth();
 
-        if (!session?.user?.email) {
+        if (!session?.user?.id) {
             return NextResponse.json(
                 { error: "Unauthorized" },
                 { status: 401 }
@@ -61,7 +63,7 @@ export async function PUT(request: NextRequest) {
 
         // Update user profile
         const updatedUser = await prisma.user.update({
-            where: { email: session.user.email },
+            where: { id: session.user.id },
             data: {
                 name: name || null,
                 company: company || null,
@@ -74,9 +76,11 @@ export async function PUT(request: NextRequest) {
                 name: true,
                 company: true,
                 phone: true,
+                phoneVerified: true,
                 image: true,
                 emailVerified: true,
                 createdAt: true,
+                updatedAt: true,
             },
         });
 
