@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const values = [
@@ -33,20 +33,58 @@ const domains = [
     { name: "Professional Accounting", img: "/career/accounting.jpg" },
 ];
 
-const jobs = [
-    { title: "Senior AI Engineer", location: "Multiple · Hybrid" },
-    { title: "Java Tech Lead", location: "Krakow · On-site" },
-    { title: "Fullstack Engineer", location: "Prague · Hybrid" },
-    { title: "Frontend Developer", location: "Remote" },
-    { title: "Backend Node.js Engineer", location: "Warsaw · Hybrid" },
-    { title: "Cloud DevOps Specialist", location: "Berlin · On-site" },
-    { title: "QA Automation Engineer", location: "Remote" },
-    { title: "Product Manager", location: "London · Hybrid" },
-];
+interface Job {
+    id: string;
+    title: string;
+    department: string;
+    location: string;
+    type: string;
+    description: string;
+    requirements: string;
+    salary?: string;
+    createdAt: string;
+    updatedAt: string;
+}
 
 export default function CareerPage() {
+    const [jobs, setJobs] = useState<Job[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
     const [showAll, setShowAll] = useState(false);
+
     const visibleJobs = showAll ? jobs : jobs.slice(0, 3);
+
+    useEffect(() => {
+        fetchJobs();
+    }, []);
+
+    const fetchJobs = async () => {
+        try {
+            setLoading(true);
+            const response = await fetch("/api/jobs");
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || "Failed to fetch jobs");
+            }
+
+            setJobs(data.jobs);
+        } catch (error: unknown) {
+            setError(
+                error instanceof Error ? error.message : "An error occurred"
+            );
+            console.error("Error fetching jobs:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const formatJobType = (type: string) => {
+        return type
+            .split("-")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join("-");
+    };
 
     return (
         <main className="bg-white text-gray-800">
@@ -148,30 +186,92 @@ export default function CareerPage() {
                     <h2 className="text-center text-3xl font-bold text-red-700">
                         Co-create the Future with Us
                     </h2>
-                    <div className="mt-6 space-y-4">
-                        {visibleJobs.map((job, i) => (
-                            <div
-                                key={i}
-                                className="flex items-center justify-between rounded-lg border p-4 transition hover:shadow-md"
-                            >
-                                <span>
-                                    <strong>{job.title}</strong> —{" "}
-                                    {job.location}
-                                </span>
-                                <button className="text-red-700 hover:underline">
-                                    Apply Now
-                                </button>
+
+                    {loading ? (
+                        <div className="mt-8 text-center">
+                            <div className="text-gray-600">
+                                Loading opportunities...
                             </div>
-                        ))}
-                    </div>
-                    <div className="mt-6 text-center">
-                        <button
-                            className="rounded-full bg-red-700 px-6 py-2 text-white transition hover:bg-red-800"
-                            onClick={() => setShowAll(!showAll)}
-                        >
-                            {showAll ? "Show Less" : "All Jobs"}
-                        </button>
-                    </div>
+                        </div>
+                    ) : error ? (
+                        <div className="mt-8 text-center">
+                            <div className="text-red-600">
+                                Unable to load job opportunities. Please try
+                                again later.
+                            </div>
+                        </div>
+                    ) : jobs.length === 0 ? (
+                        <div className="mt-8 text-center">
+                            <div className="text-gray-600">
+                                No job opportunities available at the moment.
+                                Check back soon!
+                            </div>
+                        </div>
+                    ) : (
+                        <>
+                            <div className="mt-6 space-y-4">
+                                {visibleJobs.map((job) => (
+                                    <div
+                                        key={job.id}
+                                        className="rounded-lg border p-4 transition hover:shadow-md"
+                                    >
+                                        <div className="flex items-start justify-between">
+                                            <div className="flex-1">
+                                                <div className="flex items-center gap-2">
+                                                    <Link
+                                                        href={`/jobs/${job.id}`}
+                                                        className="text-lg font-semibold text-gray-900 transition-colors hover:text-red-700"
+                                                    >
+                                                        {job.title}
+                                                    </Link>
+                                                    <span className="rounded-full bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
+                                                        {formatJobType(
+                                                            job.type
+                                                        )}
+                                                    </span>
+                                                </div>
+                                                <div className="mt-1 text-gray-600">
+                                                    {job.department} •{" "}
+                                                    {job.location}
+                                                    {job.salary && (
+                                                        <span className="ml-2 font-medium text-green-600">
+                                                            {job.salary}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                                <div className="mt-2 line-clamp-2 text-sm text-gray-500">
+                                                    {job.description.length >
+                                                    150
+                                                        ? `${job.description.substring(0, 150)}...`
+                                                        : job.description}
+                                                </div>
+                                            </div>
+                                            <div className="ml-4 flex flex-col gap-2">
+                                                <Link
+                                                    href={`/jobs/${job.id}`}
+                                                    className="rounded-lg bg-red-700 px-4 py-2 text-center text-white transition hover:bg-red-800"
+                                                >
+                                                    View Details
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            {jobs.length > 3 && (
+                                <div className="mt-6 text-center">
+                                    <button
+                                        className="rounded-full bg-red-700 px-6 py-2 text-white transition hover:bg-red-800"
+                                        onClick={() => setShowAll(!showAll)}
+                                    >
+                                        {showAll
+                                            ? "Show Less"
+                                            : `All Jobs (${jobs.length})`}
+                                    </button>
+                                </div>
+                            )}
+                        </>
+                    )}
                 </section>
             </div>
         </main>

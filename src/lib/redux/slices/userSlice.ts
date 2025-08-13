@@ -10,6 +10,7 @@ export interface User {
     phoneVerified?: Date | null;
     image?: string | null;
     emailVerified?: Date | null;
+    role?: string;
     createdAt?: Date;
     updatedAt?: Date;
 }

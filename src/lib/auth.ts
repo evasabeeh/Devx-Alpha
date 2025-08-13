@@ -83,6 +83,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 token.phone = user.phone;
                 token.phoneVerified = user.phoneVerified;
                 token.emailVerified = user.emailVerified;
+                token.role = user.role;
                 token.createdAt = user.createdAt;
                 token.updatedAt = user.updatedAt;
             }
@@ -95,6 +96,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 token.image = session.user.image;
                 token.phoneVerified = session.user.phoneVerified;
                 token.emailVerified = session.user.emailVerified;
+                token.role = session.user.role;
                 token.updatedAt = session.user.updatedAt;
             }
 
@@ -110,6 +112,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 session.user.phoneVerified = token.phoneVerified as Date;
                 session.user.image = token.image as string;
                 session.user.emailVerified = token.emailVerified as Date;
+                session.user.role = token.role as string;
                 session.user.createdAt = token.createdAt as Date;
                 session.user.updatedAt = token.updatedAt as Date;
             }

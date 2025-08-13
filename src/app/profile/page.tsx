@@ -114,7 +114,7 @@ export default function ProfilePage() {
             } else {
                 setUserError(data.error || "Failed to update profile");
             }
-        } catch (error) {
+        } catch {
             setUserError("Something went wrong. Please try again.");
         } finally {
             setIsLoading(false);

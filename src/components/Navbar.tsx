@@ -34,7 +34,7 @@ const Navbar = () => {
         try {
             await signOut({ callbackUrl: "/" });
             authToasts.signOutSuccess();
-        } catch (error) {
+        } catch {
             authToasts.signOutError();
         }
     };
@@ -43,6 +43,7 @@ const Navbar = () => {
         { name: "home", href: "/" },
         { name: "services", href: "/services" },
         { name: "about", href: "/about" },
+        { name: "our team", href: "/our-team" },
         { name: "features", href: "/features" },
         { name: "pricing", href: "/pricing" },
         { name: "contact", href: "/contact" },

@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
         try {
-            const validatedData = signUpApiSchema.parse(body);
+            signUpApiSchema.parse(body);
         } catch (error) {
             if (error instanceof ZodError) {
                 const fieldErrors = error.issues.map((err) => ({

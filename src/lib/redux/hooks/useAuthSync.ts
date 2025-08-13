@@ -35,6 +35,7 @@ export const useAuthSync = () => {
                 phone: session.user.phone || null,
                 phoneVerified: session.user.phoneVerified || null,
                 emailVerified: session.user.emailVerified || null,
+                role: session.user.role || "user",
                 createdAt: session.user.createdAt,
                 updatedAt: session.user.updatedAt,
             };

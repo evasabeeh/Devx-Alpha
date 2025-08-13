@@ -37,12 +37,13 @@ function ResetPasswordContent() {
         }
     }, [searchParams]);
 
-    const validateToken = async (token: string) => {
+    const validateToken = async (tokenToValidate: string) => {
         try {
             // You could add a token validation endpoint here
             // For now, we'll validate it when the form is submitted
+            console.log("Validating token:", tokenToValidate);
             setTokenValid(true);
-        } catch (error) {
+        } catch {
             setTokenValid(false);
             authToasts.resetPasswordError("Invalid reset token");
         }

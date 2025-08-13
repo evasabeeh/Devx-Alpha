@@ -49,12 +49,14 @@ model User {
   image         String?
   emailVerified DateTime?
   password      String? // For credentials provider
+  role          String    @default("user") // user, admin
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
   accounts           Account[]
   sessions           Session[]
   verificationTokens VerificationToken[]
+  blogPosts          BlogPost[]
 }
 
 model VerificationToken {
@@ -66,4 +68,95 @@ model VerificationToken {
   user       User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([identifier, token])
+}
+
+// Admin manageable tables
+model TeamMember {
+  id          String   @id @default(cuid())
+  name        String
+  position    String
+  bio         String?
+  image       String?
+  linkedIn    String?
+  twitter     String?
+  email       String?
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Job {
+  id          String   @id @default(cuid())
+  title       String
+  department  String
+  location    String
+  type        String   // full-time, part-time, contract
+  description String
+  requirements String
+  salary      String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  applications JobApplication[]
+}
+
+model JobApplication {
+  id            String   @id @default(cuid())
+  jobId         String
+  job           Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  // Applicant Information
+  firstName     String
+  lastName      String
+  email         String
+  phone         String?
+  linkedinUrl   String?
+  portfolioUrl  String?
+
+  // Application Content
+  coverLetter   String?
+  resumeUrl     String   // URL to uploaded resume file (PDF/DOC)
+
+  // Application Status
+  status        String   @default("pending") // pending, reviewing, shortlisted, rejected, hired
+
+  // Admin Notes
+  adminNotes    String?
+  reviewedBy    String?  // Admin user ID who reviewed
+  reviewedAt    DateTime?
+
+  // Timestamps
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([jobId])
+  @@index([status])
+  @@index([email])
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  content     String
+  excerpt     String?
+  image       String?
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id])
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
 }

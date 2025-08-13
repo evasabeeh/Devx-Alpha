@@ -62,7 +62,7 @@ export default function ProfileCompletePage() {
             } else {
                 setError(data.error || "Failed to update profile");
             }
-        } catch (error) {
+        } catch {
             setError("Something went wrong. Please try again.");
         } finally {
             setIsLoading(false);
