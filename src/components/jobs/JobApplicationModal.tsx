@@ -478,7 +478,7 @@ export default function JobApplicationModal({
                         </div>
 
                         {/* Submit Button */}
-                        <div className="flex justify-end space-x-4">
+                        <div className="mb-18 flex justify-end space-x-4">
                             <button
                                 type="button"
                                 onClick={onClose}

@@ -8,13 +8,29 @@ export default auth((req) => {
     // Protected routes that require authentication
     const protectedRoutes = ["/profile", "/dashboard"];
 
+    // Admin routes that require admin role
+    const adminRoutes = ["/admin"];
+
     // Check if the current path is protected
     const isProtectedRoute = protectedRoutes.some((route) =>
         pathname.startsWith(route)
     );
 
+    // Check if the current path is an admin route
+    const isAdminRoute = adminRoutes.some((route) =>
+        pathname.startsWith(route)
+    );
+
     // If it's a protected route and user is not authenticated, redirect to sign-in
     if (isProtectedRoute && !req.auth) {
+        const signInUrl = new URL("/auth/sign-in", req.url);
+        signInUrl.searchParams.set("callbackUrl", pathname);
+        return NextResponse.redirect(signInUrl);
+    }
+
+    // If it's an admin route, let the admin layout handle the role check
+    // The middleware just ensures the user is authenticated
+    if (isAdminRoute && !req.auth) {
         const signInUrl = new URL("/auth/sign-in", req.url);
         signInUrl.searchParams.set("callbackUrl", pathname);
         return NextResponse.redirect(signInUrl);

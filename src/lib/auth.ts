@@ -1,4 +1,4 @@
-export const runtime = "nodejs";
+// Remove runtime declaration to allow Edge Runtime for better performance
 
 import NextAuth from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
@@ -99,6 +99,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 token.role = session.user.role;
                 token.updatedAt = session.user.updatedAt;
             }
+
+            // Note: Database queries can't be performed in Edge Runtime
+            // User data refresh will be handled in the session callback or server components
 
             return token;
         },
