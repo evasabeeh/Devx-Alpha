@@ -1,6 +1,49 @@
 import Image from "next/image";
 import "./style.css";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Features | DevX Alpha - Scalable, AI-Powered, Secure Development Platform",
+    description:
+        "Explore DevX Alpha's powerful features: scalable solutions, AI-powered insights, 24/7 support, seamless integration, robust security, and real-time collaboration.",
+    keywords: [
+        "DevX Alpha features",
+        "scalable development platform",
+        "AI-powered analytics",
+        "real-time collaboration tools",
+        "secure development",
+        "developer productivity",
+        "24/7 tech support",
+        "API integration tools",
+    ],
+    openGraph: {
+        title: "Features of DevX Alpha",
+        description:
+            "Boost your workflow with DevX Alpha's scalable, secure, and AI-powered development features.",
+        url: process.env.NEXT_URL + "/features",
+        siteName: "DevX Alpha",
+        images: [
+            {
+                url: "/Seo/features.jpg",
+                width: 1200,
+                height: 630,
+                alt: "DevX Alpha Features Overview",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "DevX Alpha - Powerful Development Features",
+        description:
+            "Discover DevX Alpha’s core features: scalability, AI insights, real-time collaboration, and enterprise-grade security.",
+        images: ["/Seo/features.jpg"],
+        creator: "@DevXAlpha",
+    },
+};
+
 const features = [
     {
         heading: "Scalable Solutions",

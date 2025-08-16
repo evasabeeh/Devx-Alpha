@@ -1,11 +1,52 @@
 import Hero from "@/components/Services/ServicesHero";
 import Desc from "@/components/Services/Desc";
 import Link from "next/link";
+import type { Metadata } from "next";
+
 const heroData = {
     title: "Graphic Design",
     description:
         "We craft visually engaging designs that align with your brand, ensuring consistency across digital and print platforms.",
     image: "/services/hero/graphic-hero.jpg",
+};
+export const metadata: Metadata = {
+    title: "Graphic Design Services – DevX Alpha",
+    description:
+        "Get professional graphic design services including branding, social media creatives, packaging, and marketing collateral. Make your brand stand out with DevX Alpha.",
+    keywords: [
+        "Graphic Design",
+        "Branding",
+        "Logo Design",
+        "Social Media Creatives",
+        "Marketing Collateral",
+        "Packaging Design",
+        "Infographics",
+        "Presentation Design",
+        "DevX Alpha",
+    ],
+    openGraph: {
+        title: "Graphic Design Services – DevX Alpha",
+        description:
+            "Professional graphic design services to create a consistent and impactful brand presence across digital and print platforms.",
+        url: process.env.NEXT_URL + "/services/graphic-design",
+        siteName: "DevX Alpha",
+        images: [
+            {
+                url: "/Seo/services.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Graphic Design Services by DevX Alpha",
+            },
+        ],
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Graphic Design Services – DevX Alpha",
+        description:
+            "Elevate your brand with professional graphic design — logos, packaging, infographics, and more.",
+        images: ["/Seo/services.jpg"],
+    },
 };
 
 const designSolutionsData = {

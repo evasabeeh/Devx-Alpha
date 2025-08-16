@@ -7,6 +7,51 @@ const heroData = {
         "We build intuitive, high-performance mobile apps for iOS and Android to help you engage your audience effectively.",
     image: "/services/hero/app-hero.jpg",
 };
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Mobile App Development Services – iOS, Android, Flutter, React Native | DevX Alpha",
+    description:
+        "DevX Alpha builds high-performance mobile apps for iOS, Android, and cross-platform (Flutter, React Native). Services include native app development, API integration, testing, deployment, maintenance, and UI/UX redesign.",
+    keywords: [
+        "mobile app development",
+        "iOS app development",
+        "Android app development",
+        "cross-platform apps",
+        "Flutter app development",
+        "React Native app development",
+        "API integration for apps",
+        "mobile app testing",
+        "app deployment",
+        "app maintenance",
+        "UI/UX redesign",
+    ],
+    openGraph: {
+        title: "Mobile App Development Services – iOS, Android, Flutter, React Native | DevX Alpha",
+        description:
+            "We create intuitive, high-performance mobile apps for iOS, Android, and cross-platform. From native builds to API integration and redesigns — DevX Alpha delivers apps your users will love.",
+        url: process.env.NEXT_URL + "/services/app-development",
+        siteName: "DevX Alpha",
+        images: [
+            {
+                url: "/Seo/services.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Mobile App Development Services – DevX Alpha",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Mobile App Development Services – DevX Alpha",
+        description:
+            "High-performance mobile app development for iOS, Android, Flutter & React Native. API integration, testing, deployment, and redesign services included.",
+        images: ["/Seo/services.jpg"],
+        creator: "@DevXAlpha",
+    },
+};
 
 const mobileAppDevData = {
     sections: [

@@ -1,6 +1,44 @@
 import { prisma } from "@/lib/prisma";
 import Image from "next/image";
 import { FaXTwitter, FaEnvelope, FaLinkedin } from "react-icons/fa6";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Our Team - Meet the Experts Behind Our Success",
+    description:
+        "Meet our talented and passionate team of professionals who drive innovation and deliver exceptional results. Get to know the people behind our success.",
+    keywords: [
+        "Our Team",
+        "Team Members",
+        "Company Team",
+        "Experts",
+        "Developers",
+        "Designers",
+        "Company Staff",
+    ],
+    openGraph: {
+        title: "Our Team - Meet the Experts Behind Our Success",
+        description:
+            "Discover our dedicated team of professionals who work tirelessly to bring you the best in web development, app development, and design.",
+        url: process.env.NEXT_URL + "/about",
+        type: "website",
+        images: [
+            {
+                url: "/Seo/team.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Our Team",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Our Team - Meet the Experts Behind Our Success",
+        description:
+            "Meet our amazing team of experts who make everything possible.",
+        images: ["/Seo/team.jpg"],
+    },
+};
 async function getTeamMembers() {
     try {
         const teamMembers = await prisma.teamMember.findMany({

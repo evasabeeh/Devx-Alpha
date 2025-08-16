@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import {
     FaSearch,
@@ -8,6 +7,50 @@ import {
 } from "react-icons/fa";
 
 import "./style.css";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Our Team – DevX Alpha",
+    description:
+        "Meet the talented team behind DevX Alpha — innovative thinkers, creative designers, and skilled developers who bring cutting-edge digital solutions to life.",
+    keywords: [
+        "DevX Alpha team",
+        "Our team",
+        "Tech experts",
+        "Web development team",
+        "Innovative developers",
+        "Creative designers",
+        "Startup team",
+        "Full stack developers",
+        "Digital agency",
+        "IT company team",
+    ],
+    openGraph: {
+        title: "Our Team – DevX Alpha",
+        description:
+            "Get to know the brilliant minds driving DevX Alpha’s success. From strategy to design to development — we make innovation happen.",
+        url: process.env.NEXT_URL + "/about",
+        siteName: "DevX Alpha",
+        images: [
+            {
+                url: "/Seo/about.jpg",
+                width: 1200,
+                height: 630,
+                alt: "DevX Alpha Our Team",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Our Team – DevX Alpha",
+        description:
+            "Meet the passionate innovators, designers, and developers powering DevX Alpha.",
+        images: ["/Seo/about.jpg"],
+        creator: "@DevXAlpha",
+    },
+};
 
 const steps = [
     {

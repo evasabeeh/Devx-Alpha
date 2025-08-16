@@ -7,6 +7,50 @@ const heroData = {
         "We develop easy-to-manage, scalable CMS solutions that empower you to control your website content without technical barriers.",
     image: "/services/hero/cms-hero.jpg",
 };
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "CMS Development Services – Custom WordPress, Shopify, Webflow | DevX Alpha",
+    description:
+        "DevX Alpha builds scalable, easy-to-manage CMS solutions on WordPress, Shopify, Webflow, and custom platforms. Services include CMS setup, content migration, customization, optimization, and ongoing maintenance.",
+    keywords: [
+        "CMS development",
+        "WordPress development",
+        "Shopify development",
+        "Webflow development",
+        "custom CMS solutions",
+        "CMS content migration",
+        "CMS performance optimization",
+        "plugin customization",
+        "theme customization",
+        "CMS maintenance and support",
+    ],
+    openGraph: {
+        title: "CMS Development Services – Custom WordPress, Shopify, Webflow | DevX Alpha",
+        description:
+            "From WordPress and Shopify to fully custom CMS solutions — DevX Alpha delivers secure, responsive, SEO-friendly websites with performance optimization and long-term support.",
+        url: process.env.NEXT_URL + "/services/cms-development",
+        siteName: "DevX Alpha",
+        images: [
+            {
+                url: "/Seo/services.jpg",
+                width: 1200,
+                height: 630,
+                alt: "CMS Development Services – DevX Alpha",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "CMS Development Services – DevX Alpha",
+        description:
+            "Scalable, SEO-friendly CMS solutions for WordPress, Shopify, Webflow, and custom platforms. Get secure, optimized, and easy-to-manage websites.",
+        images: ["/Seo/services.jpg"],
+        creator: "@DevXAlpha",
+    },
+};
 
 const cmsSolutionsData = {
     sections: [

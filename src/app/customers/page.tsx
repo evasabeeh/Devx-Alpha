@@ -340,11 +340,6 @@ export default function CustomerPublicPage() {
                         </div>
                     )}
                 </div>
-
-                <div className="text-center text-sm text-gray-500">
-                    This is dummy data. Replace with your real backend API and
-                    add pagination, sorting, and authentication as needed.
-                </div>
             </div>
         </div>
     );

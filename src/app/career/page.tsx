@@ -4,6 +4,49 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
+// Note: Metadata export is commented out because this is a client component
+// To use metadata, this would need to be converted to a server component
+// or the metadata would need to be moved to a layout.tsx file
+/*
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Careers at DevX Alpha – Work With Us to Build the Future",
+    description:
+        "Join DevX Alpha and work on impactful projects in web development, AI solutions, UI/UX design, and more. Explore our latest job openings and apply today.",
+    keywords: [
+        "DevX Alpha careers",
+        "job openings",
+        "web development jobs",
+        "AI solution jobs",
+        "UI/UX design careers",
+        "work at DevX Alpha",
+    ],
+    openGraph: {
+        title: "Careers at DevX Alpha – Build the Future With Us",
+        description:
+            "Discover job openings at DevX Alpha. Join our team of innovators in web, app, AI, design, and more.",
+        url: process.env.NEXT_URL + "/career",
+        images: [
+            {
+                url: "/Seo/carrer.jpg",
+                width: 1200,
+                height: 630,
+                alt: "DevX Alpha Careers",
+            },
+        ],
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Careers at DevX Alpha – Work With Us",
+        description:
+            "Join DevX Alpha to create impactful solutions in technology and design.",
+        images: ["/Seo/carrer.jpg"],
+    },
+};
+*/
+
 const values = [
     {
         title: "Brighter Minds",

@@ -7,6 +7,50 @@ const heroData = {
         "We design user-centered interfaces that are visually appealing and easy to use, enhancing your product’s engagement and usability.",
     image: "/services/hero/uiux-hero.jpg",
 };
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "UI/UX Design Services – DevX Alpha | User-Centered & Engaging Interfaces",
+    description:
+        "DevX Alpha offers UI/UX design services including user research, wireframing, prototyping, interaction design, usability testing, and scalable design systems to enhance user engagement and product usability.",
+    keywords: [
+        "UI UX design services",
+        "user interface design",
+        "user experience design",
+        "wireframing and prototyping",
+        "mobile app UI design",
+        "web interface design",
+        "usability testing",
+        "interaction design",
+        "design systems",
+        "UI kits",
+    ],
+    openGraph: {
+        title: "UI/UX Design Services – DevX Alpha",
+        description:
+            "From user research to interaction design and scalable design systems — DevX Alpha creates user-centered, visually engaging, and highly functional interfaces.",
+        url: process.env.NEXT_URL + "/services/uiux-design",
+        siteName: "DevX Alpha",
+        images: [
+            {
+                url: "/Seo/services.jpg",
+                width: 1200,
+                height: 630,
+                alt: "UI/UX Design Services – DevX Alpha",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "UI/UX Design Services – DevX Alpha",
+        description:
+            "We design intuitive, beautiful, and user-friendly interfaces that enhance engagement and usability.",
+        images: ["/Seo/services.jpg"],
+        creator: "@DevXAlpha",
+    },
+};
 
 const designSolutionsData = {
     sections: [

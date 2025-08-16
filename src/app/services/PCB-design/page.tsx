@@ -8,6 +8,50 @@ const heroData = {
         "We deliver high-quality, custom PCB design solutions tailored to meet your product requirements, ensuring optimal performance and reliability.",
     image: "/services/hero/PCB-hero.jpg",
 };
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Custom PCB Design Services – DevX Alpha | High-Quality & Reliable Solutions",
+    description:
+        "DevX Alpha provides professional PCB design services including custom layouts, multi-layer boards, high-speed & RF designs, prototyping, and manufacturing optimization for optimal performance and reliability.",
+    keywords: [
+        "PCB design services",
+        "custom PCB layout",
+        "multi-layer PCB design",
+        "high-density PCB",
+        "RF PCB design",
+        "high-speed PCB design",
+        "PCB prototyping",
+        "DFM PCB",
+        "PCB schematic capture",
+        "PCB testing",
+    ],
+    openGraph: {
+        title: "Custom PCB Design Services – DevX Alpha",
+        description:
+            "From schematic capture to high-speed RF PCB layouts — DevX Alpha delivers precision-engineered PCB designs for performance, durability, and cost-effectiveness.",
+        url: process.env.NEXT_URL + "/services/pcb-design",
+        siteName: "DevX Alpha",
+        images: [
+            {
+                url: "/Seo/services.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Custom PCB Design – DevX Alpha",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Custom PCB Design Services – DevX Alpha",
+        description:
+            "We design and prototype PCBs optimized for performance, manufacturing, and reliability — from simple boards to high-speed RF designs.",
+        images: ["/Seo/services.jpg"],
+        creator: "@DevXAlpha",
+    },
+};
 
 const pcbDesignData = {
     sections: [

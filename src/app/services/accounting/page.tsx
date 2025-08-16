@@ -7,6 +7,50 @@ const heroData = {
         "We provide expert accounting services to help businesses maintain financial accuracy, comply with regulations, and make informed decisions.",
     image: "/services/hero/accounting-hero.jpg",
 };
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Accounting Professional Services – Bookkeeping, Tax & Payroll | DevX Alpha",
+    description:
+        "Expert accounting services for businesses and individuals including bookkeeping, tax planning, payroll processing, financial reporting, budgeting, and audit support. Ensure financial accuracy and compliance with DevX Alpha.",
+    keywords: [
+        "accounting services",
+        "bookkeeping",
+        "tax planning",
+        "payroll processing",
+        "financial reporting",
+        "budgeting",
+        "forecasting",
+        "audit support",
+        "business accounting",
+        "DevX Alpha accounting",
+    ],
+    openGraph: {
+        title: "Accounting Professional Services – DevX Alpha",
+        description:
+            "From bookkeeping and tax planning to payroll, reporting, and audits — DevX Alpha helps you maintain financial accuracy, compliance, and informed decision-making.",
+        url: process.env.NEXT_URL + "/services/accounting",
+        siteName: "DevX Alpha",
+        images: [
+            {
+                url: "/Seo/services.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Accounting Professional Services – DevX Alpha",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Accounting Professional Services – DevX Alpha",
+        description:
+            "Expert accounting services including bookkeeping, tax planning, payroll, reporting, and audits for businesses and individuals.",
+        images: ["/Seo/services.jpg"],
+        creator: "@DevXAlpha",
+    },
+};
 
 const accountingData = {
     sections: [

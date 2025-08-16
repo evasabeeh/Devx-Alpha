@@ -7,6 +7,50 @@ const heroData = {
         "We craft visually engaging designs that align with your brand, ensuring consistency across digital and print platforms.",
     image: "/services/hero/ai-hero.jpg",
 };
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "AI Solutions – Chatbots, Predictive Analytics, NLP & Computer Vision | DevX Alpha",
+    description:
+        "DevX Alpha delivers advanced AI solutions including chatbot development, predictive analytics, computer vision, NLP, and AI-powered automation. Enhance customer experience, optimize operations, and drive growth with our intelligent solutions.",
+    keywords: [
+        "AI solutions",
+        "chatbot development",
+        "predictive analytics",
+        "computer vision",
+        "AI integration",
+        "natural language processing",
+        "NLP development",
+        "AI automation tools",
+        "machine learning solutions",
+        "AI for business",
+    ],
+    openGraph: {
+        title: "AI Solutions – Chatbots, Predictive Analytics, NLP & Computer Vision | DevX Alpha",
+        description:
+            "From AI-powered chatbots to predictive analytics, NLP, and automation — DevX Alpha helps businesses unlock the full potential of artificial intelligence.",
+        url: process.env.NEXT_URL + "/services/ai-solutions",
+        siteName: "DevX Alpha",
+        images: [
+            {
+                url: "/Seo/services.jpg",
+                width: 1200,
+                height: 630,
+                alt: "AI Solutions – DevX Alpha",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "AI Solutions – DevX Alpha",
+        description:
+            "AI solutions including chatbots, predictive analytics, computer vision, NLP, and automation tools to transform your business.",
+        images: ["/Seo/services.jpg"],
+        creator: "@DevXAlpha",
+    },
+};
 
 const aiSolutionsData = {
     sections: [

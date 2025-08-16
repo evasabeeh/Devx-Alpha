@@ -1,11 +1,56 @@
 import Hero from "@/components/Services/ServicesHero";
 import Desc from "@/components/Services/Desc";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Web Development Services – DevX Alpha | Custom, SEO & Responsive Sites",
+    description:
+        "DevX Alpha builds custom, responsive, and SEO-friendly websites. We provide frontend & backend integration, e-commerce, landing pages, and ongoing maintenance to boost your business online.",
+    keywords: [
+        "web development services",
+        "custom website design",
+        "responsive websites",
+        "SEO friendly websites",
+        "frontend backend integration",
+        "e-commerce development",
+        "landing page design",
+        "website maintenance",
+        "mobile friendly websites",
+        "DevX Alpha web development",
+    ],
+    openGraph: {
+        title: "Web Development Services – DevX Alpha",
+        description:
+            "From custom website development to SEO optimization, e-commerce, and responsive design — DevX Alpha delivers high-performing websites for businesses of all sizes.",
+        url: process.env.NEXT_URL + "/services/web-development",
+        siteName: "DevX Alpha",
+        images: [
+            {
+                url: "/Seo/services.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Web Development Services – DevX Alpha",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Web Development Services – DevX Alpha",
+        description:
+            "Custom, responsive, and SEO-friendly websites built by DevX Alpha to help your business grow online.",
+        images: ["/Seo/services.jpg"],
+        creator: "@DevXAlpha",
+    },
+};
+
 const heroData = {
     title: "Web Development",
     description:
         "We build responsive, secure, and fast-loading websites that reflect your brand and deliver seamless user experiences.",
-    image: "/services/hero/web-hero.jpg",
+    image: "/Seo/services.jpg",
 };
 
 const webDevData = {

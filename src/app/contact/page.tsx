@@ -2,6 +2,45 @@ import { LuPhone } from "react-icons/lu";
 import { CiMail } from "react-icons/ci";
 import { FaLocationPin } from "react-icons/fa6";
 import ContactForm from "@/components/Contact/ContactForm";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Contact Us | DevX Alpha",
+    description:
+        "Get in touch with DevX Alpha. Have questions or need assistance? Contact us via email, phone, or visit our Pune, Maharashtra office.",
+    keywords: [
+        "DevX Alpha contact",
+        "contact us",
+        "software development support",
+        "IT services Pune",
+        "DevX Alpha email",
+        "DevX Alpha phone number",
+    ],
+    openGraph: {
+        title: "Contact DevX Alpha",
+        description:
+            "Reach out to DevX Alpha for your IT and software development needs. Email, call, or visit our Pune office.",
+        url: process.env.NEXT_URL + "/contact",
+        siteName: "DevX Alpha",
+        images: [
+            {
+                url: "/Seo/contact.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Contact DevX Alpha",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Contact DevX Alpha",
+        description:
+            "Reach out to DevX Alpha for your IT and software development needs. Email, call, or visit our Pune office.",
+        images: ["/Seo/contact.jpg"],
+    },
+};
 
 export default function Page() {
     return (

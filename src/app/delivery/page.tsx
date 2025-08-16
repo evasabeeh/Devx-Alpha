@@ -23,6 +23,56 @@ interface Order {
     shippingMethod: string;
 }
 
+// Note: Metadata export is commented out because this is a client component
+// To use metadata, this would need to be converted to a server component
+// or the metadata would need to be moved to a layout.tsx file
+/*
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Order & Delivery Tracking | DevX Alpha",
+    description:
+        "Track your orders in real time with DevX Alpha. Get live updates, estimated delivery dates, and shipping details for Standard, Express, and International deliveries.",
+    keywords: [
+        "order tracking",
+        "delivery tracking",
+        "track my order",
+        "shipping status",
+        "order status",
+        "DevX Alpha delivery",
+        "shipment tracking",
+        "track package",
+        "express delivery tracking",
+        "standard shipping tracking",
+    ],
+    openGraph: {
+        title: "Track Your Order – DevX Alpha",
+        description:
+            "Real-time delivery tracking with instant updates. Monitor your shipment from dispatch to doorstep with DevX Alpha.",
+        url: process.env.NEXT_URL + "/delivery",
+        siteName: "DevX Alpha",
+        images: [
+            {
+                url: "/Seo/delivery.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Track your order with DevX Alpha",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Track Your Delivery – DevX Alpha",
+        description:
+            "Stay updated with your order status, shipping method, and estimated delivery date. DevX Alpha makes tracking easy.",
+        images: ["/Seo/delivery.jpg"],
+        creator: "@DevXAlpha",
+    },
+};
+*/
+
 const DUMMY_ORDERS: Order[] = [
     {
         id: "ORD-1001",
@@ -305,11 +355,6 @@ export default function DeliveryPage() {
                         </table>
                     </div>
                 </section>
-
-                <p className="mt-10 text-center text-xs text-gray-400">
-                    * This is a demo delivery page. Replace dummy data with live
-                    backend APIs for production.
-                </p>
             </div>
         </div>
     );

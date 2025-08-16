@@ -1,8 +1,50 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Free eBooks on Web Development, React, and UI/UX Design | DevX Alpha",
+    description:
+        "Download free high-quality eBooks on Next.js, React, and UI/UX design. Learn modern web development, frontend techniques, and design principles from experts.",
+    keywords: [
+        "free ebooks",
+        "next.js ebook",
+        "react handbook",
+        "ui ux design ebook",
+        "frontend development ebooks",
+        "web development books",
+        "learn react free",
+        "learn next.js free",
+        "free programming books",
+        "DevX Alpha resources",
+    ],
+    openGraph: {
+        title: "Free eBooks for Developers & Designers | DevX Alpha",
+        description:
+            "Boost your skills with free eBooks on Next.js, React, and UI/UX design. High-quality resources for developers and designers.",
+        url: process.env.NEXT_URL + "/free-book",
+        siteName: "DevX Alpha",
+        images: [
+            {
+                url: "/Seo/ebook.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Free eBooks for Developers and Designers",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Free eBooks on Web Development & Design",
+        description:
+            "Download free eBooks on Next.js, React, and UI/UX design to level up your skills.",
+        images: ["/Seo/ebook.jpg"],
+        creator: "@DevXAlpha",
+    },
+};
 
 type Ebook = {
     id: string;

@@ -4,6 +4,50 @@ import {
     PricingCarousel,
     // PricingCarousel2,
 } from "@/components/Pricing/";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Transparent Pricing for Web, App & Design Services | DevX Alpha",
+    description:
+        "Explore clear, flexible, and competitive pricing for web development, app development, and graphic design services. Get quality solutions with no hidden costs at DevX Alpha.",
+    keywords: [
+        "web development pricing",
+        "app development pricing",
+        "graphic design pricing",
+        "transparent pricing",
+        "affordable web design",
+        "app development cost",
+        "branding cost",
+        "website cost",
+        "pricing plans",
+        "DevX Alpha",
+    ],
+    openGraph: {
+        title: "Transparent Pricing for Every Need – DevX Alpha",
+        description:
+            "Flexible, scalable, and transparent pricing for web, app, and design projects. Plan with confidence — no hidden costs.",
+        url: process.env.NEXT_URL + "/pricing",
+        siteName: "DevX Alpha",
+        images: [
+            {
+                url: "/Seo/pricing.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Transparent Pricing for Web, App & Design Services – DevX Alpha",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Transparent Pricing – DevX Alpha",
+        description:
+            "Clear and flexible pricing for web development, app development, and graphic design services. No hidden charges.",
+        images: ["/Seo/pricing.jpg"],
+        creator: "@DevXAlpha",
+    },
+};
 
 export default function Page() {
     const pricings = [

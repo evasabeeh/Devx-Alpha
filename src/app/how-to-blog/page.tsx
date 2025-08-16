@@ -1,7 +1,50 @@
-"use client";
-
 import Image from "next/image";
 import { FaClock, FaUser, FaLightbulb } from "react-icons/fa";
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "How-To Guides for Everyday Problems | Freelancing, Productivity & Tech",
+    description:
+        "Step-by-step how-to guides for productivity, freelancing, tech tips, lifestyle hacks, and everyday problems. Learn practical solutions with easy tutorials.",
+    keywords: [
+        "how-to guides",
+        "freelancing tips",
+        "productivity hacks",
+        "tech tutorials",
+        "lifestyle tips",
+        "student earning ideas",
+        "focus tips for studying",
+        "portfolio website guide",
+        "side hustles",
+        "step by step tutorials",
+    ],
+    openGraph: {
+        title: "How-To Guides for Everyday Problems",
+        description:
+            "Learn freelancing, productivity, tech skills, and lifestyle hacks with step-by-step guides.",
+        url: process.env.NEXT_URL + "/how-to-blog",
+        siteName: "Your Blog Name",
+        images: [
+            {
+                url: "/Seo/blog.jpg",
+                width: 1200,
+                height: 630,
+                alt: "How-To Guides for Everyday Problems",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "How-To Guides – Freelancing, Productivity, Tech & Lifestyle",
+        description:
+            "Step-by-step guides for freelancing, productivity, tech, and lifestyle improvement.",
+        images: ["/Seo/blog.jpg"],
+        creator: "@yourtwitterhandle",
+    },
+};
 
 const blogPosts = [
     {

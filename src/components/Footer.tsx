@@ -134,6 +134,9 @@ export default function Footer() {
                     </ul>
                 </div>
             </div>
+            <p className="py-5 text-center text-gray-400">
+                © {2025} DevX Alpha. All rights reserved.
+            </p>
         </div>
     );
 }
